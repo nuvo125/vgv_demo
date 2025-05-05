@@ -11,6 +11,34 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <style>
+
+    .card-custom {
+      border: none;
+      border-radius: 1.5rem;
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    }
+    .card-header-custom {
+      color: black;
+      padding: 1.25rem 1.5rem;
+      border-top-left-radius: 1.5rem;
+      border-top-right-radius: 1.5rem;
+    }
+    .info-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 0.25rem;
+    }
+    .info-item i {
+      color: #0d6efd;
+      margin-right: 0.5rem;
+    }
+    .member-col {
+      text-align: center;
+      font-weight: 500;
+      color: #495057;
+    }
+
         .hero-blur {
            height: 100vh;
            position: relative;
@@ -133,15 +161,50 @@
             VIÊN GẠCH VÀNG 2025
         </h1>
         <p class="lead" style="text-shadow:2px 2px 4px #696969">
-            Trên từng bước chân khám phá ...
+            "Trên từng bước chân khám phá ...
             <br/>
             ... là một dấu ấn đầy tự hào”
         </p>
-        <a class="btn btn-warning" href="#itinerary">
-            Xem Lịch Trình
+        <a class="btn btn-warning" href="#member">
+            Khám phá ngay
         </a>
     </div>
 </div>
+ <div class="container py-3" id="member">
+    <div class="card card-custom">
+      <div class="card-header card-header-custom text-center">
+        <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>THÀNH VIÊN ĐOÀN VGV 2025</h3>
+      </div>
+      <div class="card-body p-4">
+        <!-- Hàng 1 -->
+        <div class="row mb-4 text-center">
+          <div class="col-md-6 info-item">
+            <div class="info-title"><i class="bi bi-star-fill"></i>Thành viên danh dự</div>
+            <div class="text-muted">CEO - Bác sĩ Trần Hùng</div>
+          </div>
+          <div class="col-md-6 info-item">
+            <div class="info-title"><i class="bi bi-person-badge-fill"></i>Trưởng đoàn</div>
+            <div class="text-muted">Bác sĩ Lê Hữu Dũng</div>
+          </div>
+        </div>
+
+        <hr>
+
+        <!-- Hàng 2 -->
+        <div class="info-item mb-3 text-center">
+          <div class="info-title"><i class="bi bi-award-fill"></i>Ban thường vụ công đoàn</div>
+        </div>
+        <div class="row text-center">
+          <div class="col-6 col-md-2 offset-md-1 member-col">Ms Nhạn</div>
+          <div class="col-6 col-md-2 member-col">Bs Thắng</div>
+          <div class="col-6 col-md-2 member-col">Ms Xuân</div>
+          <div class="col-6 col-md-2 member-col">Bs Vũ</div>
+          <div class="col-12 col-md-2 member-col">Ms Châu</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <section class="container py-3" id="itinerary">
     <h2 class="text-center mb-4">Chi Tiết Lịch Trình</h2>
     <div class="accordion" id="itineraryAccordion">
@@ -1478,7 +1541,7 @@ cùng caption ngắn, súc tích không quá 100 chữ. <BR>- Lưu ý: Video nà
             </div>
         </div>
         <!-- 0.3 Tôi đủ bản lĩnh để thành công -->
-        <div class="col-md-6">
+        <div class="">
             <div class="card shadow-sm h-100">
                 <div class="card-body">
                     <h5 class="card-title emphasis">
@@ -1497,21 +1560,143 @@ KTKL.
                 </div>
             </div>
         </div>
-        <!-- 0.4 Đừng để huy hiệu rơi -->
-        <div class="col-md-6">
-            <div class="card shadow-sm h-100">
-                <div class="card-body">
-                    <h5 class="card-title text-danger">
-                        <i class="bi bi-exclamation-triangle-fill me-2"></i>ĐỪNG ĐỂ HUY HIỆU RƠI
-                    </h5>
-                    <p> Mỗi ngày, theo các thông báo của BTC, các VGV của các Team phải có mặt đúng thời gian đã thông báo. <BR>
-Cứ mỗi lần trễ của mỗi VGV, đội chơi sẽ bị thu lại 1 huy hiệu/mỗi người/mỗi lần.
-                    </p>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
+
+ <style>
+    h2.title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+  </style>
+
+  <div class="container py-5">
+    <h2 class="title"><i class="bi bi-info-circle-fill me-2"></i>Hướng dẫn chuẩn bị cho hành trình</h2>
+
+    <div class="accordion" id="accordionVGV">
+
+      <!-- Thời tiết -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingWeather">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWeather" aria-expanded="true" aria-controls="collapseWeather">
+            <i class="bi bi-sun-fill"></i>Thời tiết
+          </button>
+        </h2>
+        <div id="collapseWeather" class="accordion-collapse collapse show" aria-labelledby="headingWeather" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            Thời tiết trong hành trình sẽ khá nắng với nhiệt độ từ <strong>27–32°C</strong>, trời quang, ít mây. Nhớ mang theo <strong>kem chống nắng</strong> để bảo vệ làn da bạn nhé!
+          </div>
+        </div>
+      </div>
+
+      <!-- Trang phục -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingClothes">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseClothes" aria-expanded="false" aria-controls="collapseClothes">
+            <i class="bi bi-person-lines-fill"></i>Trang phục nên mang theo
+          </button>
+        </h2>
+        <div id="collapseClothes" class="accordion-collapse collapse" aria-labelledby="headingClothes" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            Để chuyến đi thêm trọn vẹn và thoải mái, bạn nên chuẩn bị:
+            <ul>
+              <li><i class="bi bi-umbrella"></i> Mũ hoặc ô che nắng gọn nhẹ</li>
+              <li><i class="bi bi-universal-access"></i> Quần áo kín đáo khi đến các điểm tâm linh (ngày 2 & 3)</li>
+              <li><i class="bi bi-hiking"></i> Giày thể thao hoặc sandal đế mềm</li>
+              <li><i class="bi bi-water"></i> Đồ bơi cho các hoạt động dưới nước</li>
+              <li><i class="bi bi-camera-fill"></i> Trang phục đẹp để "check-in" ở du thuyền và khách sạn 5 sao</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ăn uống -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFood">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFood" aria-expanded="false" aria-controls="collapseFood">
+            <i class="bi bi-cup-straw"></i>Ăn uống
+          </button>
+        </h2>
+        <div id="collapseFood" class="accordion-collapse collapse" aria-labelledby="headingFood" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            <ul>
+              <li><strong>1 ngày tự do ăn uống tại Ninh Bình</strong> – cơ hội để bạn khám phá ẩm thực địa phương</li>
+              <li>Ẩm thực Ninh Bình rất đa dạng và dễ ăn</li>
+              <li>Gợi ý: khu vực quanh khách sạn hoặc phố cổ Hoa Lư đều có nhiều món ngon</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mua sắm -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingShopping">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShopping" aria-expanded="false" aria-controls="collapseShopping">
+            <i class="bi bi-bag-fill"></i>Mua sắm
+          </button>
+        </h2>
+        <div id="collapseShopping" class="accordion-collapse collapse" aria-labelledby="headingShopping" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            <p>Có 2 dịp tuyệt vời để mua quà:</p>
+            <ul>
+              <li><strong>Đêm ngày 2</strong> – tại phố cổ Hoa Lư: đồ thủ công, sản phẩm thảo mộc</li>
+              <li><strong>Ngày 5</strong> – tại chợ Cái Dăm: hải sản khô, chả mực giã tay</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Di chuyển tại Ninh Bình -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTransportNB">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransportNB" aria-expanded="false" aria-controls="collapseTransportNB">
+            <i class="bi bi-car-front-fill"></i>Di chuyển tại Ninh Bình
+          </button>
+        </h2>
+        <div id="collapseTransportNB" class="accordion-collapse collapse" aria-labelledby="headingTransportNB" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            Tối ngày 2, các thành viên tự do đi lại. Bạn có thể đặt <strong>Grab</strong> hoặc gọi <strong>xe điện</strong> ngay trước khách sạn để tham quan, ăn uống.
+          </div>
+        </div>
+      </div>
+
+      <!-- Di chuyển bằng máy bay -->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingFlight">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFlight" aria-expanded="false" aria-controls="collapseFlight">
+            <i class="bi bi-airplane-engines"></i>Di chuyển bằng máy bay
+          </button>
+        </h2>
+        <div id="collapseFlight" class="accordion-collapse collapse" aria-labelledby="headingFlight" data-bs-parent="#accordionVGV">
+          <div class="accordion-body">
+            <ul>
+              <li>Mỗi người được mang <strong>7kg hành lý xách tay</strong></li>
+              <li>Nếu cần ký gửi thêm hành lý, vui lòng báo cho BTV trước <strong>14h thứ 5</strong> để được hỗ trợ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <!-- Lưu ý nếu mang thai -->
+<div class="accordion-item">
+  <h2 class="accordion-header" id="headingPregnant">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePregnant" aria-expanded="false" aria-controls="collapsePregnant">
+      <i class="bi bi-heart-pulse-fill"></i>Lưu ý nếu bạn đang mang thai
+    </button>
+  </h2>
+  <div id="collapsePregnant" class="accordion-collapse collapse" aria-labelledby="headingPregnant" data-bs-parent="#accordionVGV">
+    <div class="accordion-body">
+      Nếu bạn đang mang thai, vui lòng chuẩn bị <strong>giấy khám thai</strong> để xác nhận <strong>tuần thai hiện tại</strong>.
+      Điều này giúp ban tổ chức hỗ trợ bạn tốt hơn trong quá trình di chuyển và tham gia các hoạt động.
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+  </div>
 <footer class="text-center py-4 bg-dark text-white">
     <p>
         © 2025 FAMILY | Liên hệ BTC qua FWS
