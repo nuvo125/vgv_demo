@@ -12,140 +12,160 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
     <style>
 
-    .card-custom {
-      border: none;
-      border-radius: 1.5rem;
-      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
-    }
-    .card-header-custom {
-      color: black;
-      padding: 1.25rem 1.5rem;
-      border-top-left-radius: 1.5rem;
-      border-top-right-radius: 1.5rem;
-    }
-    .info-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #343a40;
-      margin-bottom: 0.25rem;
-    }
-    .info-item i {
-      color: #0d6efd;
-      margin-right: 0.5rem;
-    }
-    .member-col {
-      text-align: center;
-      font-weight: 500;
-      color: #495057;
-    }
+        .card-custom {
+          border: none;
+          border-radius: 1.5rem;
+          box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+        }
+        .card-header-custom {
+          color: black;
+          padding: 1.25rem 1.5rem;
+          border-top-left-radius: 1.5rem;
+          border-top-right-radius: 1.5rem;
+        }
+        .info-title {
+          font-size: 1.25rem;
+          font-weight: 600;
+          color: #343a40;
+          margin-bottom: 0.25rem;
+        }
+        .info-item i {
+          color: #0d6efd;
+          margin-right: 0.5rem;
+        }
+        .member-col {
+          text-align: center;
+          font-weight: 500;
+          color: #495057;
+        }
 
-        .hero-blur {
-           height: 100vh;
-           position: relative;
-           overflow: hidden;
-           color: white;
-           text-align: center;
-         }
+            .hero-blur {
+               height: 100vh;
+               position: relative;
+               overflow: hidden;
+               color: white;
+               text-align: center;
+             }
 
-         .hero-blur .blur-bg {
-           background-image: url('https://i2.ex-cdn.com/crystalbay.com/files/content/2024/06/21/du-lich-tam-coc-bich-dong-1-1023.jpg');
+             .hero-blur .blur-bg {
+               background-image: url('https://i2.ex-cdn.com/crystalbay.com/files/content/2024/06/21/du-lich-tam-coc-bich-dong-1-1023.jpg');
+               background-size: cover;
+               background-position: center;
+               filter: blur(4px);
+               position: absolute;
+               width: 100%;
+               height: 100%;
+               top: 0;
+               left: 0;
+               z-index: 1;
+             }
+
+             .hero-blur .content {
+               position: relative;
+               z-index: 2;
+               top: 50%;
+               transform: translateY(-50%);
+               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+             }
+
+            .accordion-button {
            background-size: cover;
            background-position: center;
-           filter: blur(4px);
+         }
+
+         .overlay-text {
            position: absolute;
-           width: 100%;
-           height: 100%;
-           top: 0;
-           left: 0;
-           z-index: 1;
+           top: 0; left: 0;
+           width: 100%; height: 100%;
+           background-color: rgba(0,0,0,0.5);
+           padding-left: 2rem;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           border-radius: 12px;
          }
 
-         .hero-blur .content {
-           position: relative;
-           z-index: 2;
-           top: 50%;
-           transform: translateY(-50%);
-           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+         /* ----------------------- */
+         /* NGÀY 1 */
+         .bg-day1 {
+           background-image: url('1.jpg');
+         }
+         @media (max-width: 991.98px) {
+           .bg-day1 { background-image: url('1.jpg'); }
+         }
+         @media (max-width: 575.98px) {
+           .bg-day1 { background-image: url('1.jpg'); }
          }
 
-        .accordion-button {
-       background-size: cover;
-       background-position: center;
-     }
+         /* NGÀY 2 */
+         .bg-day2 {
+           background-image: url('2.jpg');
+         }
+         @media (max-width: 991.98px) {
+           .bg-day2 { background-image: url('2.jpg'); }
+         }
+         @media (max-width: 575.98px) {
+           .bg-day2 { background-image: url('2.jpg'); }
+         }
 
-     .overlay-text {
-       position: absolute;
-       top: 0; left: 0;
-       width: 100%; height: 100%;
-       background-color: rgba(0,0,0,0.5);
-       padding-left: 2rem;
-       display: flex;
-       flex-direction: column;
-       justify-content: center;
-       border-radius: 12px;
-     }
+         /* NGÀY 3 */
+         .bg-day3 {
+           background-image: url('3.jpg');
+         }
+         @media (max-width: 991.98px) {
+           .bg-day3 { background-image: url('3.jpg'); }
+         }
+         @media (max-width: 575.98px) {
+           .bg-day3 { background-image: url('3.jpg'); }
+         }
 
-     /* ----------------------- */
-     /* NGÀY 1 */
-     .bg-day1 {
-       background-image: url('1.jpg');
-     }
-     @media (max-width: 991.98px) {
-       .bg-day1 { background-image: url('1.jpg'); }
-     }
-     @media (max-width: 575.98px) {
-       .bg-day1 { background-image: url('1.jpg'); }
-     }
+         /* NGÀY 4 */
+         .bg-day4 {
+           background-image: url('4.jpg');
+         }
+         @media (max-width: 991.98px) {
+           .bg-day4 { background-image: url('4.jpg'); }
+         }
+         @media (max-width: 575.98px) {
+           .bg-day4 { background-image: url('4.jpg'); }
+         }
 
-     /* NGÀY 2 */
-     .bg-day2 {
-       background-image: url('2.jpg');
-     }
-     @media (max-width: 991.98px) {
-       .bg-day2 { background-image: url('2.jpg'); }
-     }
-     @media (max-width: 575.98px) {
-       .bg-day2 { background-image: url('2.jpg'); }
-     }
-
-     /* NGÀY 3 */
-     .bg-day3 {
-       background-image: url('3.jpg');
-     }
-     @media (max-width: 991.98px) {
-       .bg-day3 { background-image: url('3.jpg'); }
-     }
-     @media (max-width: 575.98px) {
-       .bg-day3 { background-image: url('3.jpg'); }
-     }
-
-     /* NGÀY 4 */
-     .bg-day4 {
-       background-image: url('4.jpg');
-     }
-     @media (max-width: 991.98px) {
-       .bg-day4 { background-image: url('4.jpg'); }
-     }
-     @media (max-width: 575.98px) {
-       .bg-day4 { background-image: url('4.jpg'); }
-     }
-
-     /* NGÀY 5 */
-     .bg-day5 {
-       background-image: url('5.jpg');
-     }
-     @media (max-width: 991.98px) {
-       .bg-day5 { background-image: url('5.jpg'); }
-     }
-     @media (max-width: 575.98px) {
-       .bg-day5 { background-image: url('5.jpg'); }
-     }
+         /* NGÀY 5 */
+         .bg-day5 {
+           background-image: url('5.jpg');
+         }
+         @media (max-width: 991.98px) {
+           .bg-day5 { background-image: url('5.jpg'); }
+         }
+         @media (max-width: 575.98px) {
+           .bg-day5 { background-image: url('5.jpg'); }
+         }
 
 
     </style>
     <style>
         table.table td, table.table th {
             font-size: 12pt;
+        }
+    </style>
+    <style>
+        html {
+          scroll-behavior: smooth;
+        }
+        .btn {
+          transition: all 0.3s ease;
+        }
+        .btn:hover {
+          transform: scale(1.05);
+        }
+        .modal.fade .modal-dialog {
+          transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+          transform: translate(0, -25%);
+          opacity: 0;
+        }
+        .modal.show .modal-dialog {
+          transform: translate(0, 0);
+          opacity: 1;
         }
     </style>
 </head>
@@ -170,41 +190,38 @@
         </a>
     </div>
 </div>
- <div class="container py-3" id="member">
+<div class="container py-3" id="member">
     <div class="card card-custom">
-      <div class="card-header card-header-custom text-center">
-        <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>THÀNH VIÊN ĐOÀN VGV 2025</h3>
-      </div>
-      <div class="card-body p-4">
-        <!-- Hàng 1 -->
-        <div class="row mb-4 text-center">
-          <div class="col-md-6 info-item">
-            <div class="info-title"><i class="bi bi-star-fill"></i>Thành viên danh dự</div>
-            <div class="text-muted">CEO - Bác sĩ Trần Hùng</div>
-          </div>
-          <div class="col-md-6 info-item">
-            <div class="info-title"><i class="bi bi-person-badge-fill"></i>Trưởng đoàn</div>
-            <div class="text-muted">Bác sĩ Lê Hữu Dũng</div>
-          </div>
+        <div class="card-header card-header-custom text-center">
+            <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>THÀNH VIÊN ĐOÀN VGV 2025</h3>
         </div>
-
-        <hr>
-
-        <!-- Hàng 2 -->
-        <div class="info-item mb-3 text-center">
-          <div class="info-title"><i class="bi bi-award-fill"></i>Ban thường vụ công đoàn</div>
+        <div class="card-body p-4">
+            <!-- Hàng 1 -->
+            <div class="row mb-4 text-center">
+                <div class="col-md-6 info-item">
+                    <div class="info-title"><i class="bi bi-star-fill"></i>Thành viên danh dự</div>
+                    <div class="text-muted">CEO - Bác sĩ Trần Hùng</div>
+                </div>
+                <div class="col-md-6 info-item">
+                    <div class="info-title"><i class="bi bi-person-badge-fill"></i>Trưởng đoàn</div>
+                    <div class="text-muted">Bác sĩ Lê Hữu Dũng</div>
+                </div>
+            </div>
+            <hr/>
+            <!-- Hàng 2 -->
+            <div class="info-item mb-3 text-center">
+                <div class="info-title"><i class="bi bi-award-fill"></i>Ban thường vụ công đoàn</div>
+            </div>
+            <div class="row text-center">
+                <div class="col-6 col-md-2 offset-md-1 member-col">Ms Nhạn</div>
+                <div class="col-6 col-md-2 member-col">Bs Thắng</div>
+                <div class="col-6 col-md-2 member-col">Ms Xuân</div>
+                <div class="col-6 col-md-2 member-col">Bs Vũ</div>
+                <div class="col-12 col-md-2 member-col">Ms Châu</div>
+            </div>
         </div>
-        <div class="row text-center">
-          <div class="col-6 col-md-2 offset-md-1 member-col">Ms Nhạn</div>
-          <div class="col-6 col-md-2 member-col">Bs Thắng</div>
-          <div class="col-6 col-md-2 member-col">Ms Xuân</div>
-          <div class="col-6 col-md-2 member-col">Bs Vũ</div>
-          <div class="col-12 col-md-2 member-col">Ms Châu</div>
-        </div>
-      </div>
     </div>
-  </div>
-
+</div>
 <section class="container py-3" id="itinerary">
     <h2 class="text-center mb-4">Chi Tiết Lịch Trình</h2>
     <div class="accordion" id="itineraryAccordion">
@@ -224,6 +241,8 @@
             <div aria-labelledby="headingDay1" class="accordion-collapse collapse" data-bs-parent="#itineraryAccordion"
                  id="collapseDay1">
                 <div class="accordion-body">
+                    <p>VGV sẽ tự túc di chuyển và có mặt tại Nhà ga Đà Nẵng để check in lên chuyến tàu SE20 <br>Thời điểm tập trung đoàn: 17h15 </p>
+                    <p>Các viên gạch vàng sẽ dùng bữa tối với đồ ăn do BTC chuẩn bị sẵn mang theo lên tàu</p>
                 </div>
             </div>
         </div>
@@ -326,7 +345,7 @@
                         </tr>
                         <tr>
                             <td>18:30 - 22:00</td>
-                            <td>Khám phá Phố cổ Hoa Lư<BR>(VGV tự do tổ chức
+                            <td>Khám phá Phố cổ Hoa Lư<br/>(VGV tự do tổ chức
                                 đi chơi và ăn tối tại
                                 đây)
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m14"
@@ -470,13 +489,13 @@
                                     giám khảo chấm điểm dựa trên phong thái thuyết trình, khả năng sáng
                                     tạo và cách truyền tải cảm xúc. Đây là cơ hội để các đội đưa lịch sử
                                     “sống lại” qua lăng kính của chính mình.</p>
-                                    <P>Chủ đề 1: HOA LƯ - Bối cảnh lịch sử của cố đô. </P>
-                                    <P>Chủ đề 2: NINH BÌNH - Quá khứ, hiện tại và tương lai </P>
-                                    <P> Chủ đề 3: ĐINH BỘ LĨNH - Thân thế và sự nghiệp. </P>
-                                    <P>Chủ đề 4: ĐẠI CỒ VIỆT - Ý nghĩa và bối cảnh lịch sử. </P>
-                                    <P>Chủ đề 5: LÊ HOÀN - Sóng gió lịch sử. </P>
-                                    <P> Chủ đề 6: DƯƠNG VÂN NGA - Hoàng hậu 2 vua.
-                                    </P>
+                                    <p>Chủ đề 1: HOA LƯ - Bối cảnh lịch sử của cố đô. </p>
+                                    <p>Chủ đề 2: NINH BÌNH - Quá khứ, hiện tại và tương lai </p>
+                                    <p> Chủ đề 3: ĐINH BỘ LĨNH - Thân thế và sự nghiệp. </p>
+                                    <p>Chủ đề 4: ĐẠI CỒ VIỆT - Ý nghĩa và bối cảnh lịch sử. </p>
+                                    <p>Chủ đề 5: LÊ HOÀN - Sóng gió lịch sử. </p>
+                                    <p> Chủ đề 6: DƯƠNG VÂN NGA - Hoàng hậu 2 vua.
+                                    </p>
                                     <div class="mt-4 text-center">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
                                         </button>
@@ -583,13 +602,13 @@
                                 <div class="modal-header"><h5 class="modal-title">DÁNG XƯA TRÊN ĐỈNH</h5>
                                     <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                                 </div>
-                                <div class="modal-body"><P>Mỗi đội sẽ đăng ký ít nhất 02 thành viên thành công leo lên
+                                <div class="modal-body"><p>Mỗi đội sẽ đăng ký ít nhất 02 thành viên thành công leo lên
                                     đỉnh núi và
                                     chụp được những bức hình trong trang mục múa phong cách như ảnh
-                                    mẫu. </P>
-                                    <P>Và lưu ý: 2 thành viên mà đội đăng ký sẽ là thành viên chưa tham gia
+                                    mẫu. </p>
+                                    <p>Và lưu ý: 2 thành viên mà đội đăng ký sẽ là thành viên chưa tham gia
                                         Dấu xưa vọng lời. Tất nhiên, BTC khuyến khích cả đội cùng thực hiện.
-                                        Team nào có cả đội cùng lên đỉnh sẽ được tặng thêm 1 huy hiệu. </P>
+                                        Team nào có cả đội cùng lên đỉnh sẽ được tặng thêm 1 huy hiệu. </p>
                                     <div class="mt-4 text-center">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
                                         </button>
@@ -607,7 +626,7 @@
                                 <div class="modal-body">Phố cổ Hoa Lư như một lát cắt yên ả trong dòng chảy thời gian.
                                     Khi phố lên đèn,
                                     ánh sáng vàng dịu rọi qua từng nếp nhà truyền thống được phục dựng chỉn chu, gợi
-                                    nên cảm giác hoài cổ rất đỗi thân thương mang đầy hoài niệm thời gian. <BR>
+                                    nên cảm giác hoài cổ rất đỗi thân thương mang đầy hoài niệm thời gian. <br/>
                                     Với đầy đủ những món ăn đậm chất Bắc Bộ – từ cơm cháy, dê núi, miến lươn, bánh
                                     nướng cho đến những hàng chè dân dã – các VGV có thể tự do khám phá ẩm thực
                                     và tận hưởng một bữa tối ấm cúng, đậm đà bản sắc ngay giữa lòng cố đô xưa.
@@ -679,7 +698,7 @@
                         </tr>
                         <tr>
                             <td>09:30 - 10:30</td>
-                            <td>Đi thuyền Tam Cốc: <br>Đỉnh Mây
+                            <td>Đi thuyền Tam Cốc: <br/>Đỉnh Mây
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m33"
                                         data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                             </td>
@@ -690,14 +709,14 @@
                         </tr>
                         <tr>
                             <td>10:30 - 11:00</td>
-                            <td>Đi thuyền Tam Cốc: <br>Đền Quý Minh Đại Vương
+                            <td>Đi thuyền Tam Cốc: <br/>Đền Quý Minh Đại Vương
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m35"
                                         data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td>11:00 - 11:30</td>
-                            <td>Đi thuyền Tam Cốc: <br>Đền Thần Nông
+                            <td>Đi thuyền Tam Cốc: <br/>Đền Thần Nông
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m37"
                                         data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                             </td>
@@ -739,7 +758,6 @@
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m44"
                                         data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                             </td>
-
                         </tr>
                         </tbody>
                     </table>
@@ -770,7 +788,7 @@
                                     thuyền (1 thành viên tạo
                                     dáng chèo thuyền, 1 thành viên sẽ tạo dáng khác có thể dáng múa, dáng nghệ thuật
                                     nhất
-                                    có thể), mỗi đội cử thành viên để chụp ảnh cho đồng đội của mình. <br>
+                                    có thể), mỗi đội cử thành viên để chụp ảnh cho đồng đội của mình. <br/>
                                     Hai thành viên được đăng ký là 2 thành viên
                                     <div class="mt-4 text-center">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
@@ -801,7 +819,7 @@
                                 <div class="modal-header"><h5 class="modal-title">DÒNG SỬ CHẢY MÃI</h5>
                                     <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                                 </div>
-                                <div class="modal-body"><P>Mỗi đội sẽ bốc thăm 1 chủ đề lịch sử và cử 1 thành viên đại
+                                <div class="modal-body"><p>Mỗi đội sẽ bốc thăm 1 chủ đề lịch sử và cử 1 thành viên đại
                                     diện hóa thân thành hướng
                                     dẫn viên du lịch. Người chơi sẽ thuyết trình trong 5 phút, giới thiệu chủ đề một
                                     cách sinh
@@ -809,13 +827,13 @@
                                     khả
                                     năng sáng tạo và cách truyền tải cảm xúc. Đây là cơ hội để các đội đưa lịch sử “sống
                                     lại”
-                                    qua lăng kính của chính mình. </P>
-                                    <P>Chủ đề 1: Tam Cốc </P>
-                                    <P>Chủ đề 2: Cuộc chiến chống Nguyên - Mông lần 2 </P>
-                                    <P> Chủ đề 3: Quý Minh Đại Vương </P>
-                                    <P>Chủ đề 4: Vua Hùng và vị trí lịch sử </P>
-                                    <P>Chủ đề 5: Thần Nông </P>
-                                    <P> Chủ đề 6: Văn minh lúa nước</P>
+                                    qua lăng kính của chính mình. </p>
+                                    <p>Chủ đề 1: Tam Cốc </p>
+                                    <p>Chủ đề 2: Cuộc chiến chống Nguyên - Mông lần 2 </p>
+                                    <p> Chủ đề 3: Quý Minh Đại Vương </p>
+                                    <p>Chủ đề 4: Vua Hùng và vị trí lịch sử </p>
+                                    <p>Chủ đề 5: Thần Nông </p>
+                                    <p> Chủ đề 6: Văn minh lúa nước</p>
                                     <div class="mt-4 text-center">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
                                         </button>
@@ -939,7 +957,7 @@
                                     là “Nam Thiên đệ nhị động” – là ngôi chùa cổ được xây dựng từ thế
                                     kỷ XVII, do hai vị thiền sư Trí Kiên và Trí Thể dựng nên. Chùa có
                                     kiến trúc độc đáo, gồm ba phần: chùa Hạ, chùa Trung và chùa
-                                    Thượng – nối liền bởi những bậc đá cheo leo giữa lưng núi. <br>
+                                    Thượng – nối liền bởi những bậc đá cheo leo giữa lưng núi. <br/>
                                     Đến Tam Cốc – Bích Động là về với một miền thiên nhiên thơ
                                     mộng, thiền tịnh, đồng thời được chạm vào hơi thở của lịch sử còn
                                     hiện hữu trong từng vách đá, dòng nước, nếp chùa.
@@ -961,7 +979,7 @@
                                     một nhịp, để "Tĩnh Tại
                                     Dáng Xưa" kể thay những câu chuyện thầm thì của đất trời. Một khoảnh khắc thôi, để
                                     quá
-                                    khứ và hiện tại cùng hòa chung trong một khuôn hình. <br>
+                                    khứ và hiện tại cùng hòa chung trong một khuôn hình. <br/>
                                     Mỗi thành viên của Team "phải" có một bức hình "để đời" tại đây
                                     <div class="mt-4 text-center">
                                         <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
@@ -1073,7 +1091,6 @@
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m59"
                                         data-bs-toggle="modal"><i class="fas fa-search"></i></button>
                             </td>
-
                         </tr>
                         </tbody>
                     </table>
@@ -1171,8 +1188,8 @@
                                 <div class="modal-header"><h5 class="modal-title">Hang Luồn</h5>
                                     <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                                 </div>
-                                <div class="modal-body">Đua thuyền Kayak <br>
-                                    Mỗi đội cử 4 thành viên tham gia vào 2 thuyền Kayak. <br>
+                                <div class="modal-body">Đua thuyền Kayak <br/>
+                                    Mỗi đội cử 4 thành viên tham gia vào 2 thuyền Kayak. <br/>
                                     2 thuyền của đội hoàn thành chặng đau sẽ nhận được huy hiệu Mái
                                     chèo vịnh xanh.
                                     <div class="mt-4 text-center">
@@ -1226,7 +1243,7 @@
                                     sau
                                     một hành trình đầy thử thách và dấu ấn. Khi nhật ký hóa thành lời, khi
                                     lời ca thay cho tiếng lòng – chúng ta cùng bùng nổ, cùng kể lại hành
-                                    trình bằng cả trái tim. <br>Đây không chỉ là một cái kết – mà là đỉnh cao của
+                                    trình bằng cả trái tim. <br/>Đây không chỉ là một cái kết – mà là đỉnh cao của
                                     sự gắn kết!
 
                                     <div class="mt-4 text-center">
@@ -1314,7 +1331,7 @@
                         </tr>
                         <tr>
                             <td>12:00 - 13:00</td>
-                            <td>Lên xe về Hải Phòng <br>VGV sẽ được thưởng thức món sữa
+                            <td>Lên xe về Hải Phòng <br/>VGV sẽ được thưởng thức món sữa
                                 chua trân châu Hạ Long nổi tiếng trên
                                 chuyến xe trở về Hải Phòng.
                                 <button class="btn btn-sm btn-outline-secondary ms-2" data-bs-target="#m66"
@@ -1519,11 +1536,13 @@
                     <h5 class="card-title text-primary">
                         <i class="bi bi-camera-fill me-2"></i>KHOẢNH KHẮC VÀNG
                     </h5>
-                    - Trong suốt chặng hành trình của mình, mỗi ngày, các VGV của mỗi đội sẽ chụp hình. <BR>
-*  Mỗi Team sẽ đăng 3 tấm/ngày/đội lên FWS, hạn cuối  gửi ảnh là 20:00 mỗi ngày, từ ngày 18-20/5<BR> - BTV sẽ chấm các bức ảnh, bức ảnh có thể 1 người, nhiều người hay cả team.
-                    <BR>- Bức hình đẹp cùng Caption hay sẽ được BTV chọn trao huy hiệu và đăng lên FHT.
-<BR>Công bố giải vào sáng ngày hôm sau, trong khung giờ ăn sáng.
-<BR>Giải thưởng:  BTC sẽ chọn ra 03 bức ảnh đạt giải. Team  có bức ảnh đạt giải sẽ nhận được 1 huy hiệu VGV Nhiếp ảnh gia
+                    - Trong suốt chặng hành trình của mình, mỗi ngày, các VGV của mỗi đội sẽ chụp hình. <br/>
+                    * Mỗi Team sẽ đăng 3 tấm/ngày/đội lên FWS, hạn cuối gửi ảnh là 20:00 mỗi ngày, từ ngày 18-20/5<br/>
+                    - BTV sẽ chấm các bức ảnh, bức ảnh có thể 1 người, nhiều người hay cả team.
+                    <br/>- Bức hình đẹp cùng Caption hay sẽ được BTV chọn trao huy hiệu và đăng lên FHT.
+                    <br/>Công bố giải vào sáng ngày hôm sau, trong khung giờ ăn sáng.
+                    <br/>Giải thưởng: BTC sẽ chọn ra 03 bức ảnh đạt giải. Team có bức ảnh đạt giải sẽ nhận được 1 huy
+                    hiệu VGV Nhiếp ảnh gia
                 </div>
             </div>
         </div>
@@ -1534,9 +1553,13 @@
                     <h5 class="card-title text-success">
                         <i class="bi bi-play-circle-fill me-2"></i>TUA LẠI NHÉ!
                     </h5>
-                    - Trong suốt hành trình, mỗi Team sẽ tạo một video bằng Capcut không quá 60s, ghi lại hành trình của Team mình, và đăng lên FWS
-cùng caption ngắn, súc tích không quá 100 chữ. <BR>- Lưu ý: Video này là cho cả hành trình của mình <BR>- Hạn nộp là  23:59 ngày 20/5/2025. <BR>- BTC sẽ công bố giải từ 07:00 - 08:00 sáng ngày 21/05/25
-<BR>Giải thưởng:  BTC sẽ chọn ra 03 video đạt giải. Team  có video đạt giải sẽ được 1 huy hiệu VGV Media
+                    - Trong suốt hành trình, mỗi Team sẽ tạo một video bằng Capcut không quá 60s, ghi lại hành trình của
+                    Team mình, và đăng lên FWS
+                    cùng caption ngắn, súc tích không quá 100 chữ. <br/>- Lưu ý: Video này là cho cả hành trình của mình
+                    <br/>- Hạn nộp là 23:59 ngày 20/5/2025. <br/>- BTC sẽ công bố giải từ 07:00 - 08:00 sáng ngày
+                    21/05/25
+                    <br/>Giải thưởng: BTC sẽ chọn ra 03 video đạt giải. Team có video đạt giải sẽ được 1 huy hiệu VGV
+                    Media
                 </div>
             </div>
         </div>
@@ -1547,156 +1570,172 @@ cùng caption ngắn, súc tích không quá 100 chữ. <BR>- Lưu ý: Video nà
                     <h5 class="card-title emphasis">
                         <i class="bi bi-journal-richtext me-2"></i>TÔI ĐỦ BẢN LĨNH ĐỂ THÀNH CÔNG
                     </h5>
-                    - Trong suốt hành trình, mỗi VGV sẽ viết bài viết ngắn bày tỏ  cảm nhận về sự tự tin, niềm tự hào và  lòng tự trọng của mình
-được tăng lên như thế nào sau chuyến đi này  để từ  đó mỗi các nhân tự vượt qua chính mình, tăng niềm tin với FAMILY, mong
-muốn được đóng góp nhiều hơn cho FAMILY. <BR> - Yêu cầu:
-                    <LI>Bài viết không quá 1000 từ. </LI>
-                    <LI>Bài viết gởi lên FWS theo các Team đã được BTV tạo. </LI>
-                    <LI>Thời gian viết bài tùy vào mỗi cá nhân. Đăng lên FWS  Trước 07:00 ngày 23/05/25</LI>
-                    - BTV tiến hành xem các bài viết của các cá nhân, những bài viết hay sẽ được đăng lên FHT và có những phần quà hấp dẫn cho cá
-nhân có bài viết hay.<BR>
-Giải thưởng:  06 Giải cá nhân cho 06 bài viết.  Phần thưởng cho 6 người chiến thắng là 06 phần quà đặc biệt của Hội đồng
-KTKL.
+                    - Trong suốt hành trình, mỗi VGV sẽ viết bài viết ngắn bày tỏ cảm nhận về sự tự tin, niềm tự hào và
+                    lòng tự trọng của mình
+                    được tăng lên như thế nào sau chuyến đi này để từ đó mỗi các nhân tự vượt qua chính mình, tăng niềm
+                    tin với FAMILY, mong
+                    muốn được đóng góp nhiều hơn cho FAMILY. <br/> - Yêu cầu:
+                    <li>Bài viết không quá 1000 từ.</li>
+                    <li>Bài viết gởi lên FWS theo các Team đã được BTV tạo.</li>
+                    <li>Thời gian viết bài tùy vào mỗi cá nhân. Đăng lên FWS Trước 07:00 ngày 23/05/25</li>
+                    - BTV tiến hành xem các bài viết của các cá nhân, những bài viết hay sẽ được đăng lên FHT và có
+                    những phần quà hấp dẫn cho cá
+                    nhân có bài viết hay.<br/>
+                    Giải thưởng: 06 Giải cá nhân cho 06 bài viết. Phần thưởng cho 6 người chiến thắng là 06 phần quà đặc
+                    biệt của Hội đồng
+                    KTKL.
                 </div>
             </div>
         </div>
     </div>
 </section>
-
- <style>
+<style>
     h2.title {
       font-weight: bold;
       text-align: center;
       margin-bottom: 30px;
     }
-  </style>
-
-  <div class="container py-5">
+</style>
+<div class="container py-5">
     <h2 class="title"><i class="bi bi-info-circle-fill me-2"></i>Hướng dẫn chuẩn bị cho hành trình</h2>
-
     <div class="accordion" id="accordionVGV">
-
-      <!-- Thời tiết -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingWeather">
-          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWeather" aria-expanded="true" aria-controls="collapseWeather">
-            <i class="bi bi-sun-fill"></i>Thời tiết
-          </button>
-        </h2>
-        <div id="collapseWeather" class="accordion-collapse collapse show" aria-labelledby="headingWeather" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            Thời tiết trong hành trình sẽ khá nắng với nhiệt độ từ <strong>27–32°C</strong>, trời quang, ít mây. Nhớ mang theo <strong>kem chống nắng</strong> để bảo vệ làn da bạn nhé!
-          </div>
+        <!-- Thời tiết -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingWeather">
+                <button aria-controls="collapseWeather" aria-expanded="true" class="accordion-button"
+                        data-bs-target="#collapseWeather" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-sun-fill"></i>Thời tiết
+                </button>
+            </h2>
+            <div aria-labelledby="headingWeather" class="accordion-collapse collapse show"
+                 data-bs-parent="#accordionVGV" id="collapseWeather">
+                <div class="accordion-body">
+                    Thời tiết trong hành trình sẽ khá nắng với nhiệt độ từ <strong>27–32°C</strong>, trời quang, ít mây.
+                    Nhớ mang theo <strong>kem chống nắng</strong> để bảo vệ làn da bạn nhé!
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Trang phục -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingClothes">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseClothes" aria-expanded="false" aria-controls="collapseClothes">
-            <i class="bi bi-person-lines-fill"></i>Trang phục nên mang theo
-          </button>
-        </h2>
-        <div id="collapseClothes" class="accordion-collapse collapse" aria-labelledby="headingClothes" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            Để chuyến đi thêm trọn vẹn và thoải mái, bạn nên chuẩn bị:
-            <ul>
-              <li><i class="bi bi-umbrella"></i> Mũ hoặc ô che nắng gọn nhẹ</li>
-              <li><i class="bi bi-universal-access"></i> Quần áo kín đáo khi đến các điểm tâm linh (ngày 2 & 3)</li>
-              <li><i class="bi bi-hiking"></i> Giày thể thao hoặc sandal đế mềm</li>
-              <li><i class="bi bi-water"></i> Đồ bơi cho các hoạt động dưới nước</li>
-              <li><i class="bi bi-camera-fill"></i> Trang phục đẹp để "check-in" ở du thuyền và khách sạn 5 sao</li>
-            </ul>
-          </div>
+        <!-- Trang phục -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingClothes">
+                <button aria-controls="collapseClothes" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapseClothes" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-person-lines-fill"></i>Trang phục nên mang theo
+                </button>
+            </h2>
+            <div aria-labelledby="headingClothes" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapseClothes">
+                <div class="accordion-body">
+                    Để chuyến đi thêm trọn vẹn và thoải mái, bạn nên chuẩn bị:
+                    <ul>
+                        <li><i class="bi bi-umbrella"></i> Mũ hoặc ô che nắng gọn nhẹ</li>
+                        <li><i class="bi bi-universal-access"></i> Quần áo kín đáo khi đến các điểm tâm linh (ngày 2
+                            &amp; 3)
+                        </li>
+                        <li><i class="bi bi-hiking"></i> Giày thể thao hoặc sandal đế mềm</li>
+                        <li><i class="bi bi-water"></i> Đồ bơi cho các hoạt động dưới nước</li>
+                        <li><i class="bi bi-camera-fill"></i> Trang phục đẹp để "check-in" ở du thuyền và khách sạn 5
+                            sao
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Ăn uống -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFood">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFood" aria-expanded="false" aria-controls="collapseFood">
-            <i class="bi bi-cup-straw"></i>Ăn uống
-          </button>
-        </h2>
-        <div id="collapseFood" class="accordion-collapse collapse" aria-labelledby="headingFood" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            <ul>
-              <li><strong>1 ngày tự do ăn uống tại Ninh Bình</strong> – cơ hội để bạn khám phá ẩm thực địa phương</li>
-              <li>Ẩm thực Ninh Bình rất đa dạng và dễ ăn</li>
-              <li>Gợi ý: khu vực quanh khách sạn hoặc phố cổ Hoa Lư đều có nhiều món ngon</li>
-            </ul>
-          </div>
+        <!-- Ăn uống -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFood">
+                <button aria-controls="collapseFood" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapseFood" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-cup-straw"></i>Ăn uống
+                </button>
+            </h2>
+            <div aria-labelledby="headingFood" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapseFood">
+                <div class="accordion-body">
+                    <ul>
+                        <li><strong>1 ngày tự do ăn uống tại Ninh Bình</strong> – cơ hội để bạn khám phá ẩm thực địa
+                            phương
+                        </li>
+                        <li>Ẩm thực Ninh Bình rất đa dạng và dễ ăn</li>
+                        <li>Gợi ý: khu vực quanh khách sạn hoặc phố cổ Hoa Lư đều có nhiều món ngon</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Mua sắm -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingShopping">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseShopping" aria-expanded="false" aria-controls="collapseShopping">
-            <i class="bi bi-bag-fill"></i>Mua sắm
-          </button>
-        </h2>
-        <div id="collapseShopping" class="accordion-collapse collapse" aria-labelledby="headingShopping" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            <p>Có 2 dịp tuyệt vời để mua quà:</p>
-            <ul>
-              <li><strong>Đêm ngày 2</strong> – tại phố cổ Hoa Lư: đồ thủ công, sản phẩm thảo mộc</li>
-              <li><strong>Ngày 5</strong> – tại chợ Cái Dăm: hải sản khô, chả mực giã tay</li>
-            </ul>
-          </div>
+        <!-- Mua sắm -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingShopping">
+                <button aria-controls="collapseShopping" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapseShopping" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-bag-fill"></i>Mua sắm
+                </button>
+            </h2>
+            <div aria-labelledby="headingShopping" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapseShopping">
+                <div class="accordion-body">
+                    <p>Có 2 dịp tuyệt vời để mua quà:</p>
+                    <ul>
+                        <li><strong>Đêm ngày 2</strong> – tại phố cổ Hoa Lư: đồ thủ công, sản phẩm thảo mộc</li>
+                        <li><strong>Ngày 5</strong> – tại chợ Cái Dăm: hải sản khô, chả mực giã tay</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Di chuyển tại Ninh Bình -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingTransportNB">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransportNB" aria-expanded="false" aria-controls="collapseTransportNB">
-            <i class="bi bi-car-front-fill"></i>Di chuyển tại Ninh Bình
-          </button>
-        </h2>
-        <div id="collapseTransportNB" class="accordion-collapse collapse" aria-labelledby="headingTransportNB" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            Tối ngày 2, các thành viên tự do đi lại. Bạn có thể đặt <strong>Grab</strong> hoặc gọi <strong>xe điện</strong> ngay trước khách sạn để tham quan, ăn uống.
-          </div>
+        <!-- Di chuyển tại Ninh Bình -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTransportNB">
+                <button aria-controls="collapseTransportNB" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapseTransportNB" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-car-front-fill"></i>Di chuyển tại Ninh Bình
+                </button>
+            </h2>
+            <div aria-labelledby="headingTransportNB" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapseTransportNB">
+                <div class="accordion-body">
+                    Tối ngày 2, các thành viên tự do đi lại. Bạn có thể đặt <strong>Grab</strong> hoặc gọi <strong>xe
+                    điện</strong> ngay trước khách sạn để tham quan, ăn uống.
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Di chuyển bằng máy bay -->
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFlight">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFlight" aria-expanded="false" aria-controls="collapseFlight">
-            <i class="bi bi-airplane-engines"></i>Di chuyển bằng máy bay
-          </button>
-        </h2>
-        <div id="collapseFlight" class="accordion-collapse collapse" aria-labelledby="headingFlight" data-bs-parent="#accordionVGV">
-          <div class="accordion-body">
-            <ul>
-              <li>Mỗi người được mang <strong>7kg hành lý xách tay</strong></li>
-              <li>Nếu cần ký gửi thêm hành lý, vui lòng báo cho BTV trước <strong>14h thứ 5</strong> để được hỗ trợ</li>
-            </ul>
-          </div>
+        <!-- Di chuyển bằng máy bay -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFlight">
+                <button aria-controls="collapseFlight" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapseFlight" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-airplane-engines"></i>Di chuyển bằng máy bay
+                </button>
+            </h2>
+            <div aria-labelledby="headingFlight" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapseFlight">
+                <div class="accordion-body">
+                    <ul>
+                        <li>Mỗi người được mang <strong>7kg hành lý xách tay</strong></li>
+                        <li>Nếu cần ký gửi thêm hành lý, vui lòng báo cho BTV trước <strong>14h thứ 5</strong> để được
+                            hỗ trợ
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-
         <!-- Lưu ý nếu mang thai -->
-<div class="accordion-item">
-  <h2 class="accordion-header" id="headingPregnant">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePregnant" aria-expanded="false" aria-controls="collapsePregnant">
-      <i class="bi bi-heart-pulse-fill"></i>Lưu ý nếu bạn đang mang thai
-    </button>
-  </h2>
-  <div id="collapsePregnant" class="accordion-collapse collapse" aria-labelledby="headingPregnant" data-bs-parent="#accordionVGV">
-    <div class="accordion-body">
-      Nếu bạn đang mang thai, vui lòng chuẩn bị <strong>giấy khám thai</strong> để xác nhận <strong>tuần thai hiện tại</strong>.
-      Điều này giúp ban tổ chức hỗ trợ bạn tốt hơn trong quá trình di chuyển và tham gia các hoạt động.
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingPregnant">
+                <button aria-controls="collapsePregnant" aria-expanded="false" class="accordion-button collapsed"
+                        data-bs-target="#collapsePregnant" data-bs-toggle="collapse" type="button">
+                    <i class="bi bi-heart-pulse-fill"></i>Lưu ý nếu bạn đang mang thai
+                </button>
+            </h2>
+            <div aria-labelledby="headingPregnant" class="accordion-collapse collapse" data-bs-parent="#accordionVGV"
+                 id="collapsePregnant">
+                <div class="accordion-body">
+                    Nếu bạn đang mang thai, vui lòng chuẩn bị <strong>giấy khám thai</strong> để xác nhận <strong>tuần
+                    thai hiện tại</strong>.
+                    Điều này giúp ban tổ chức hỗ trợ bạn tốt hơn trong quá trình di chuyển và tham gia các hoạt động.
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
-
-    </div>
-  </div>
 <footer class="text-center py-4 bg-dark text-white">
     <p>
         © 2025 FAMILY | Liên hệ BTC qua FWS
