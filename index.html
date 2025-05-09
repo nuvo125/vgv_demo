@@ -10,28 +10,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
-  <script>
-    function checkPassword() {
-      const input = document.getElementById("secretCode").value;
-      const correctCode = "vgv2025"; // mã số bí mật
-      const secretDiv = document.getElementById("hiddenDiv");
-      const inputGroup = document.getElementById("inputGroup");
-      const instruction = document.getElementById("instruction");
+    <script>
+        function checkPassword() {
+          const input = document.getElementById("secretCode").value;
+          const correctCode = "17052025"; // mã số bí mật
+          const secretDiv = document.getElementById("hiddenDiv");
+          const inputGroup = document.getElementById("inputGroup");
+          const instruction = document.getElementById("instruction");
 
-      if (input === correctCode) {
-        secretDiv.style.display = "block";
-        inputGroup.style.display = "none";
-        instruction.style.display = "none";
+          if (input === correctCode) {
+            secretDiv.style.display = "block";
+            inputGroup.style.display = "none";
+            instruction.style.display = "none";
 
-        // Đợi một chút để đảm bảo div đã hiển thị xong trước khi cuộn
-        setTimeout(() => {
-          secretDiv.scrollIntoView({ behavior: "smooth" });
-        }, 100);
-      } else {
-        alert("Mã không đúng!");
-      }
-    }
-  </script>
+            // Đợi một chút để đảm bảo div đã hiển thị xong trước khi cuộn
+            setTimeout(() => {
+              secretDiv.scrollIntoView({ behavior: "smooth" });
+            }, 100);
+          } else {
+            alert("Mã không đúng!");
+          }
+        }
+    </script>
 
     <style>
 
@@ -275,7 +275,7 @@
                      id="collapseDay1">
                     <div class="accordion-body">
                         <p>17:15 - VGV sẽ tự túc di chuyển và có mặt tại Nhà ga Đà Nẵng để check in lên chuyến tàu
-                            SE20</p>
+                            SE20. <br>Thông tin về vé tàu sẽ được gửi tới thành viên trong các group Zalo.</p>
                         <p>Các viên gạch vàng sẽ dùng bữa tối với đồ ăn do BTC chuẩn bị sẵn mang theo lên tàu</p>
                     </div>
                 </div>
@@ -415,12 +415,10 @@
                                     <div class="modal-header"><h5 class="modal-title">Ăn sáng</h5>
                                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                                     </div>
-                                    <div class="modal-body">Đến với Cố đô, các VGV sẽ bắt đầu hành trình bằng trải
-                                        nghiệm ẩm
-                                        thực để lấp
-                                        đầu "chiếc bụng đói".
-                                        Đặc sản địa phương - món Bún cá chấm Khu 9 - Món ăn sáng đặc trưng của
-                                        vùng đất Cố đô.
+                                    <div class="modal-body"><p>Đến với Cố đô, các VGV sẽ bắt đầu hành trình bằng trải
+                                        nghiệm ẩm thực để lấp đầy "chiếc bụng đói". <br> Đặc sản địa phương - món Bún cá
+                                        chấm Khu 9 - Món ăn sáng đặc trưng của vùng đất Cố đô.</p>
+
                                         <div class="mt-4 text-center">
                                             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
                                             </button>
@@ -436,9 +434,11 @@
                                     <div class="modal-header"><h5 class="modal-title">REVIEWER</h5>
                                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                                     </div>
-                                    <div class="modal-body">Mỗi Team có một bài đánh giá ẩm thực và quán trên Google
-                                        Maps.
-                                        Bài viết ít nhất 50 chữ, hình ảnh, hạng sao.
+                                    <div class="modal-body"><p>Mỗi Team có một bài đánh giá ẩm thực và quán trên Google
+                                        Maps. <br>
+                                        Bài viết ít nhất 50 chữ, hình ảnh, hạng sao.</p>
+                                        <a href="https://maps.app.goo.gl/GWF6xB9dRFAZXQyr8">Thông tin trên Google
+                                            map</a>
                                         <div class="mt-4 text-center">
                                             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
                                             </button>
@@ -487,7 +487,7 @@
                                     </div>
                                     <div class="modal-body">Tại vườn chim Thung Nham, chụp một tấm hình phong cảnh thật
                                         ấn
-                                        tượng tại vườn chim Thung Nham. Mỗi đội nhận được 01 huy hiệu
+                                        tượng tại vườn chim Thung Nham. <br> Mỗi đội nhận được 01 huy hiệu
                                         ngay sau khi hoàn thành bức ảnh và gửi về FWS.
                                         <div class="mt-4 text-center">
                                             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">Đóng
@@ -507,7 +507,7 @@
                                     <div class="modal-body">Nếu đến Ninh Bình mà chưa thưởng thức dê núi và cơm cháy –
                                         hai
                                         món đặc sản trứ
-                                        danh – thì xem như chưa cảm nhận trọn vẹn hồn quê nơi đây.
+                                        danh – thì xem như chưa cảm nhận trọn vẹn hồn quê nơi đây. <br>
                                         Thịt dê mềm, không hề có mùi, ăn kèm cơm cháy giòn tan… là sự kết hợp gây
                                         thương nhớ, vừa ngon miệng vừa tiếp thêm năng lượng cho hành trình buổi chiều
                                         thêm hứng khởi.
@@ -549,8 +549,8 @@
                                     <div class="modal-body"><p>Mỗi đội sẽ bốc thăm 1 chủ đề lịch sử và cử 1 thành viên
                                         đại
                                         diện hóa
-                                        thân thành hướng dẫn viên du lịch. Người chơi sẽ thuyết trình trong 5
-                                        phút, giới thiệu chủ đề một cách sinh động, hấp dẫn và dễ hiểu. Ban
+                                        thân thành Hướng dẫn viên du lịch. <br> Người chơi sẽ thuyết trình trong 5
+                                        phút, giới thiệu chủ đề một cách sinh động, hấp dẫn và dễ hiểu.<br>Ban
                                         giám khảo chấm điểm dựa trên phong thái thuyết trình, khả năng sáng
                                         tạo và cách truyền tải cảm xúc. Đây là cơ hội để các đội đưa lịch sử
                                         “sống lại” qua lăng kính của chính mình.</p>
@@ -1730,11 +1730,35 @@
                     </div>
                 </div>
             </div>
+            <!-- 0.4 Nhật ký hành trình -->
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title emphasis">
+                            <i class="bi bi-journal-richtext me-2"></i>NHẬT KÝ HÀNH TRÌNH
+                        </h5>
+                        <P>Mỗi team cử thành viên viết nhật ký hành trình cuối ngày và nộp cho BTC vào 8h sáng ngày hôm
+                            sau. </P>
+                        - Số lượng: 1 nhật ký hành trình/ngày, 1 thành viên/bài
+                    </div>
+                </div>
+            </div>
+            <!-- 0.5 Giờ là vàng - Đúng là ngầu -->
+            <div class="col-md-6">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-danger">
+                            <i class="bi bi-patch-check me-2"></i>GIỜ LÀ VÀNG - ĐÚNG LÀ NGẦU
+                        </h5>
+                        Tặng huy hiệu Teamwork cho đội đúng giờ
+                    </div>
+                </div>
+            </div>
             <!-- 0.3 Tôi đủ bản lĩnh để thành công -->
             <div class="">
                 <div class="card shadow-sm h-100">
                     <div class="card-body">
-                        <h5 class="card-title emphasis">
+                        <h5 class="card-title text-warning">
                             <i class="bi bi-journal-richtext me-2"></i>TÔI ĐỦ BẢN LĨNH ĐỂ THÀNH CÔNG
                         </h5>
                         - Trong suốt hành trình, mỗi VGV sẽ viết bài viết ngắn bày tỏ cảm nhận về sự tự tin, niềm tự hào
