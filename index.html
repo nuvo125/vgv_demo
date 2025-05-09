@@ -268,10 +268,16 @@
 
     <div class="container py-4">
         <h4 class="mb-3">Tìm kiếm thông tin lưu trú, di chuyển</h4>
-        <div class="mb-3 d-flex">
-            <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">
-            <a class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</a>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Nhập họ và tên" aria-label="Recipient’s username"
+                   aria-describedby="button-addon2" id="searchInput">
+            <button class="btn btn-primary" onclick="searchMembers()" type="button" id="button-addon2">Tìm kiếm</button>
         </div>
+
+<!--        <div class="mb-3 d-flex">-->
+<!--            <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">-->
+<!--            <a class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</a>-->
+<!--        </div>-->
         <div id="resultBox" class="mt-3 d-none">
             <h5>Kết quả:</h5>
             <ul id="resultList" class="list-group"></ul>
