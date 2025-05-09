@@ -2204,6 +2204,65 @@
         </div>
     </div>
 </div>
+
+<div class="container py-4">
+  <h4 class="mb-3">Tìm kiếm thành viên</h4>
+  <div class="mb-3 d-flex">
+    <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">
+    <button class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</button>
+  </div>
+  <div id="resultBox" class="mt-3 d-none">
+    <h5>Kết quả:</h5>
+    <ul id="resultList" class="list-group"></ul>
+  </div>
+</div>
+
+<script src="members_full_with_vehicle.js"></script>
+<script>
+  function formatMember(m, highlight = false) {
+    const content = `${m.name} – ${m.unit} – Buồng tàu: ${m.room} – ${m.coach} – ${m.vehicle} – Phòng: ${m.hotel_room}`;
+    const li = document.createElement("li");
+    li.className = "list-group-item" + (highlight ? " fw-bold text-success" : "");
+    li.textContent = content;
+    return li;
+  }
+
+  function searchMembers() {
+    const input = document.getElementById("searchInput").value.trim().toUpperCase();
+    const resultBox = document.getElementById("resultBox");
+    const resultList = document.getElementById("resultList");
+    resultList.innerHTML = "";
+
+    const matchedList = members.filter(m => m.name.includes(input));
+    if (matchedList.length === 0) {
+      resultBox.classList.remove("d-none");
+      resultList.innerHTML = `<li class="list-group-item text-danger">❌ Không tìm thấy "${input}"</li>`;
+      return;
+    }
+
+    matchedList.forEach((matched, index) => {
+      resultList.appendChild(formatMember(matched, true));
+
+      const sameHotelRoom = members.filter(m =>
+        m.hotel_room === matched.hotel_room &&
+        m.name !== matched.name
+      );
+
+      sameHotelRoom.forEach(m => resultList.appendChild(formatMember(m)));
+
+      if (index < matchedList.length - 1) {
+        const divider = document.createElement("li");
+        divider.className = "list-group-item text-muted text-center small";
+        divider.textContent = "———";
+        resultList.appendChild(divider);
+      }
+    });
+
+    resultBox.classList.remove("d-none");
+  }
+</script>
+
+
 <footer class="text-center py-4 bg-dark text-white">
     <p>
         © 2025 FAMILY | BAN THƯỜNG VỤ CÔNG ĐOÀN
