@@ -88,7 +88,7 @@
                z-index: 2;
                top: 50%;
                transform: translateY(-50%);
-               text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+
              }
 
             .accordion-button {
@@ -219,7 +219,9 @@
             <input type="password" id="secretCode" placeholder="Nhập mã bí mật"/>
             <a class="btn btn-warning" onclick="checkPassword()" href="#member">Xác nhận</a>
         </div>
+
     </div>
+
 </div>
 <div id="hiddenDiv">
     <div class="container py-3" id="member">
@@ -227,6 +229,7 @@
             <div class="card-header card-header-custom text-center">
                 <h3 class="mb-0"><i class="bi bi-people-fill me-2"></i>THÀNH VIÊN ĐOÀN VGV 2025</h3>
             </div>
+
             <div class="card-body p-4">
                 <!-- Hàng 1 -->
                 <div class="row mb-4 text-center">
@@ -254,6 +257,69 @@
             </div>
         </div>
     </div>
+
+    <div class="container py-4">
+        <h4 class="mb-3">Tìm kiếm thông tin lưu trú, di chuyển</h4>
+        <div class="mb-3 d-flex">
+            <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">
+            <a class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</a>
+        </div>
+        <div id="resultBox" class="mt-3 d-none">
+            <h5>Kết quả:</h5>
+            <ul id="resultList" class="list-group"></ul>
+        </div>
+    </div>
+
+    <script src="members_full_with_vehicle.js"></script>
+    <script>
+        function formatMember(m, highlight = false) {
+        const content = `
+          ${m.name} - ${m.unit}<br>
+          Thông tin tàu: buồng ${m.room} – toa ${m.coach}<br>
+          Di chuyển tại Ninh Bình: ${m.vehicle}<br>
+          Thông tin khách sạn: Đang cập nhật
+        `;
+        const li = document.createElement("li");
+        li.className = "list-group-item" + (highlight ? " text-success fw-bold" : "");
+        li.innerHTML = content; // Sử dụng innerHTML để hỗ trợ <br>
+        return li;
+      }
+
+        function searchMembers() {
+          const input = document.getElementById("searchInput").value.trim().toUpperCase();
+          const resultBox = document.getElementById("resultBox");
+          const resultList = document.getElementById("resultList");
+          resultList.innerHTML = "";
+
+          const matchedList = members.filter(m => m.name.includes(input));
+          if (matchedList.length === 0) {
+            resultBox.classList.remove("d-none");
+            resultList.innerHTML = `<li class="list-group-item text-danger">❌ Không tìm thấy "${input}"</li>`;
+            return;
+          }
+
+          matchedList.forEach((matched, index) => {
+            resultList.appendChild(formatMember(matched, true));
+
+            const sameHotelRoom = members.filter(m =>
+              m.hotel_room === matched.hotel_room &&
+              m.name !== matched.name
+            );
+
+            sameHotelRoom.forEach(m => resultList.appendChild(formatMember(m)));
+
+            if (index < matchedList.length - 1) {
+              const divider = document.createElement("li");
+              divider.className = "list-group-item text-muted text-center small";
+              divider.textContent = "———";
+              resultList.appendChild(divider);
+            }
+          });
+
+          resultBox.classList.remove("d-none");
+        }
+    </script>
+
     <section class="container py-3" id="itinerary">
         <h2 class="text-center mb-4">Chi Tiết Lịch Trình</h2>
         <div class="accordion" id="itineraryAccordion">
@@ -2204,63 +2270,6 @@
         </div>
     </div>
 </div>
-
-<div class="container py-4">
-  <h4 class="mb-3">Tìm kiếm thông tin lưu trú, di chuyển</h4>
-  <div class="mb-3 d-flex">
-    <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">
-    <button class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</button>
-  </div>
-  <div id="resultBox" class="mt-3 d-none">
-    <h5>Kết quả:</h5>
-    <ul id="resultList" class="list-group"></ul>
-  </div>
-</div>
-
-<script src="members_full_with_vehicle.js"></script>
-<script>
-  function formatMember(m, highlight = false) {
-    const content = `${m.name} – ${m.unit} – Buồng tàu: ${m.room} – ${m.coach} – ${m.vehicle} – Phòng: ${m.hotel_room}`;
-    const li = document.createElement("li");
-    li.className = "list-group-item" + (highlight ? " fw-bold text-success" : "");
-    li.textContent = content;
-    return li;
-  }
-
-  function searchMembers() {
-    const input = document.getElementById("searchInput").value.trim().toUpperCase();
-    const resultBox = document.getElementById("resultBox");
-    const resultList = document.getElementById("resultList");
-    resultList.innerHTML = "";
-
-    const matchedList = members.filter(m => m.name.includes(input));
-    if (matchedList.length === 0) {
-      resultBox.classList.remove("d-none");
-      resultList.innerHTML = `<li class="list-group-item text-danger">❌ Không tìm thấy "${input}"</li>`;
-      return;
-    }
-
-    matchedList.forEach((matched, index) => {
-      resultList.appendChild(formatMember(matched, true));
-
-      const sameHotelRoom = members.filter(m =>
-        m.hotel_room === matched.hotel_room &&
-        m.name !== matched.name
-      );
-
-      sameHotelRoom.forEach(m => resultList.appendChild(formatMember(m)));
-
-      if (index < matchedList.length - 1) {
-        const divider = document.createElement("li");
-        divider.className = "list-group-item text-muted text-center small";
-        divider.textContent = "———";
-        resultList.appendChild(divider);
-      }
-    });
-
-    resultBox.classList.remove("d-none");
-  }
-</script>
 
 
 <footer class="text-center py-4 bg-dark text-white">
