@@ -1,11 +1,5 @@
-
-import streamlit as st
-import requests
-
-API_URL = "https://script.google.com/macros/s/AKfycbwfacrQGO7Dm6A0gnAYDfQX6QuIG5Cf_P8s887UTtCDjpseQc3t6i4DqtWg-zAGojbbNQ/exec"  # Thay bằng Script ID thật
-
 st.set_page_config(page_title="Đăng ký chủ đề & bài hát", layout="centered")
-st.title("Đăng ký Chủ đề & Bài hát")
+st.title("🎤 Đăng ký Chủ đề & Bài hát")
 
 @st.cache_data
 def load_choices():
@@ -25,18 +19,37 @@ if not data:
     st.stop()
 
 with st.form("register_form"):
-    team = st.radio("Chọn TEAM", data.get("Team", []), key="team")
-    topic1 = st.radio("Chủ đề: DẤU XƯA VỌNG LỜI", data.get("Dấu xưa vọng lời", []), key="topic1")
-    topic2 = st.radio("Chủ đề: DÒNG SỬ CHẢY MÃI", data.get("Dòng sử chảy mãi", []), key="topic2")
-    topic3 = st.radio("Chủ đề: DEBATE: GÓC NHÌN HẬU THẾ", data.get("Debate", []), key="topic3")
+    if not data.get("Team"):
+        st.warning("Tất cả các TEAM đã được chọn.")
+        st.stop()
 
-    st.markdown("**BÀI HÁT POOL PARTY (chọn 3 bài hát)**")
+    team = st.radio("🔰 Chọn TEAM", options=data.get("Team", []), key="team")
+
+    if not data.get("Dấu xưa vọng lời"):
+        st.warning("Không còn chủ đề nào cho DẤU XƯA VỌNG LỜI.")
+        st.stop()
+    topic1 = st.radio("📜 DẤU XƯA VỌNG LỜI", options=data.get("Dấu xưa vọng lời", []), key="topic1")
+
+    if not data.get("Dòng sử chảy mãi"):
+        st.warning("Không còn chủ đề nào cho DÒNG SỬ CHẢY MÃI.")
+        st.stop()
+    topic2 = st.radio("📖 DÒNG SỬ CHẢY MÃI", options=data.get("Dòng sử chảy mãi", []), key="topic2")
+
+    if not data.get("Debate"):
+        st.warning("Không còn chủ đề nào cho DEBATE.")
+        st.stop()
+    topic3 = st.radio("🤔 DEBATE: GÓC NHÌN HẬU THẾ", options=data.get("Debate", []), key="topic3")
+
+    st.markdown("🎵 **BÀI HÁT POOL PARTY (chọn nhiều)**")
     selected_songs = []
-    for idx, song in enumerate(data.get("Bài hát", [])):
-        if st.checkbox(song, key=f"song_{idx}"):
-            selected_songs.append(song)
+    if data.get("Bài hát"):
+        for i, song in enumerate(data["Bài hát"]):
+            if st.checkbox(song, key=f"song_{i}"):
+                selected_songs.append(song)
+    else:
+        st.info("Tất cả bài hát đã được chọn.")
 
-    submitted = st.form_submit_button("Gửi đăng ký")
+    submitted = st.form_submit_button("✅ Gửi đăng ký")
 
     if submitted:
         payload = {
@@ -48,14 +61,18 @@ with st.form("register_form"):
         }
 
         try:
-            response = requests.post(API_URL, json=payload)
-            result = response.json()
+            res = requests.post(API_URL, json=payload)
+            result = res.json()
 
             if result.get("success"):
-                st.success("✅ Ghi nhận thành công.")
+                st.success("✅ Ghi nhận thành công!")
+                st.balloons()
             else:
                 st.error("❌ " + result.get("message", "Lỗi chưa xác định."))
-                #st.info("Trang sẽ tải lại sau 5 giây.")
-                # st.rerun()
+                st.markdown("""
+                    <script>
+                        setTimeout(() => { window.location.reload(); }, 5000);
+                    </script>
+                """, unsafe_allow_html=True)
         except Exception as e:
             st.warning(f"⚠️ Gửi dữ liệu thất bại: {e}")
