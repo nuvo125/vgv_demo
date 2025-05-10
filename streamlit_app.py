@@ -2,7 +2,7 @@
 import streamlit as st
 import requests
 
-API_URL = "https://script.google.com/macros/s/AKfycbzxMsD5U3J_k8u-uJ_DH7Sif4dMLiiIDl4_64lWMfAL8Hn6Ex-FLs2loWYXdO75nXH6hA/exec"  # Thay bằng URL thật
+API_URL = "https://script.google.com/macros/s/AKfycbw41o-sbzwohuA8_MekhlwzHHBpcUfbGF1zrDXlbTHK9dptPlK14IC7Ij-oEoioBlP2Vw/exec"  # Thay bằng URL thật
 
 st.set_page_config(page_title="Đăng ký chủ đề & bài hát", layout="centered")
 st.title("🎤 Đăng ký Chủ đề & Bài Hát")
