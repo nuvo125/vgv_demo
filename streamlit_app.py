@@ -55,7 +55,7 @@ with st.form("register_form"):
                 st.success("✅ Ghi nhận thành công.")
             else:
                 st.error("❌ " + result.get("message", "Lỗi chưa xác định."))
-                st.info("Trang sẽ tải lại sau 5 giây.")
+                #st.info("Trang sẽ tải lại sau 5 giây.")
                 # st.rerun()
         except Exception as e:
             st.warning(f"⚠️ Gửi dữ liệu thất bại: {e}")
