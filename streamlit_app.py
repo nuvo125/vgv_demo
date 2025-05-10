@@ -30,7 +30,7 @@ with st.form("register_form"):
     topic2 = st.radio("Chủ đề: DÒNG SỬ CHẢY MÃI", data.get("Dòng sử chảy mãi", []), key="topic2")
     topic3 = st.radio("Chủ đề: DEBATE: GÓC NHÌN HẬU THẾ", data.get("Debate", []), key="topic3")
 
-    st.markdown("**BÀI HÁT POOL PARTY (chọn nhiều)**")
+    st.markdown("**BÀI HÁT POOL PARTY (chọn 3 bài hát)**")
     selected_songs = []
     for idx, song in enumerate(data.get("Bài hát", [])):
         if st.checkbox(song, key=f"song_{idx}"):
