@@ -1,5 +1,10 @@
+import streamlit as st
+import requests
+
+API_URL = "https://script.google.com/macros/s/AKfycbwfacrQGO7Dm6A0gnAYDfQX6QuIG5Cf_P8s887UTtCDjpseQc3t6i4DqtWg-zAGojbbNQ/exec"  # Thay bằng Script ID thật
+
 st.set_page_config(page_title="Đăng ký chủ đề & bài hát", layout="centered")
-st.title("🎤 Đăng ký Chủ đề & Bài hát")
+st.title("Đăng ký Chủ đề & Bài hát")
 
 @st.cache_data
 def load_choices():
