@@ -266,71 +266,773 @@
         </div>
     </div>
 
-    <div class="container py-4">
-        <h4 class="mb-3">Tìm kiếm thông tin lưu trú, di chuyển</h4>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Nhập họ và tên" aria-label="Recipient’s username"
-                   aria-describedby="button-addon2" id="searchInput">
-            <button class="btn btn-primary" onclick="searchMembers()" type="button" id="button-addon2">Tìm kiếm</button>
-        </div>
+    <!--    <div class="container py-4">-->
+    <!--        <h4 class="mb-3">Tìm kiếm thông tin lưu trú, di chuyển</h4>-->
+    <!--        <div class="input-group mb-3">-->
+    <!--            <input type="text" class="form-control" placeholder="Nhập họ và tên" aria-label="Recipient’s username"-->
+    <!--                   aria-describedby="button-addon2" id="searchInput">-->
+    <!--            <button class="btn btn-primary" onclick="searchMembers()" type="button" id="button-addon2">Tìm kiếm</button>-->
+    <!--        </div>-->
 
-<!--        <div class="mb-3 d-flex">-->
-<!--            <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">-->
-<!--            <a class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</a>-->
-<!--        </div>-->
-        <div id="resultBox" class="mt-3 d-none">
-            <h5>Kết quả:</h5>
-            <ul id="resultList" class="list-group"></ul>
+    <!--&lt;!&ndash;        <div class="mb-3 d-flex">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <input id="searchInput" type="text" class="form-control me-2" placeholder="Nhập họ và tên">&ndash;&gt;-->
+    <!--&lt;!&ndash;            <a class="btn btn-primary" onclick="searchMembers()">Tìm kiếm</a>&ndash;&gt;-->
+    <!--&lt;!&ndash;        </div>&ndash;&gt;-->
+    <!--        <div id="resultBox" class="mt-3 d-none">-->
+    <!--            <h5>Kết quả:</h5>-->
+    <!--            <ul id="resultList" class="list-group"></ul>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <!--    <script src="members_full_with_vehicle.js"></script>-->
+    <!--    <script>-->
+    <!--        function formatMember(m, highlight = false) {-->
+    <!--        const content = `-->
+    <!--          ${m.name} - ${m.unit}<br>-->
+    <!--          Ngày sinh: ${m.date_of_birth}<br>-->
+    <!--          CCCD: ${m.cccd}<br>-->
+    <!--          Thông tin tàu hỏa: buồng ${m.room} – toa ${m.coach}<br>-->
+    <!--          Xe di chuyển tại Ninh Bình: ${m.vehicle}<br>-->
+    <!--          Phòng nghỉ tại khách sạn: Đang cập nhật <br>-->
+    <!--          Phòng nghỉ trên du thuyền:-->
+    <!--        `;-->
+    <!--        const li = document.createElement("li");-->
+    <!--        li.className = "list-group-item" + (highlight ? " text-success fw-bold" : "");-->
+    <!--        li.innerHTML = content; // Sử dụng innerHTML để hỗ trợ <br>-->
+    <!--        return li;-->
+    <!--      }-->
+
+    <!--        function searchMembers() {-->
+    <!--          const input = document.getElementById("searchInput").value.trim().toUpperCase();-->
+    <!--          const resultBox = document.getElementById("resultBox");-->
+    <!--          const resultList = document.getElementById("resultList");-->
+    <!--          resultList.innerHTML = "";-->
+
+    <!--          const matchedList = members.filter(m => m.name.includes(input));-->
+    <!--          if (matchedList.length === 0) {-->
+    <!--            resultBox.classList.remove("d-none");-->
+    <!--            resultList.innerHTML = `<li class="list-group-item text-danger">❌ Không tìm thấy "${input}"</li>`;-->
+    <!--            return;-->
+    <!--          }-->
+
+    <!--          matchedList.forEach((matched, index) => {-->
+    <!--            resultList.appendChild(formatMember(matched, true));-->
+
+    <!--            const sameHotelRoom = members.filter(m =>-->
+    <!--              m.hotel_room === matched.hotel_room &&-->
+    <!--              m.name !== matched.name-->
+    <!--            );-->
+
+    <!--            sameHotelRoom.forEach(m => resultList.appendChild(formatMember(m)));-->
+
+    <!--            if (index < matchedList.length - 1) {-->
+    <!--              const divider = document.createElement("li");-->
+    <!--              divider.className = "list-group-item text-muted text-center small";-->
+    <!--              divider.textContent = "———";-->
+    <!--              resultList.appendChild(divider);-->
+    <!--            }-->
+    <!--          });-->
+
+    <!--          resultBox.classList.remove("d-none");-->
+    <!--        }-->
+    <!--    </script>-->
+
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+          <form class="d-flex gap-2 flex-column flex-md-row justify-content-center align-items-center mb-3" onsubmit="search(); return false;">
+            <input type="text"
+                   class="form-control form-control-lg"
+                   id="keyword"
+                   placeholder="Nhập tên cần tìm..."
+                   onkeypress="if(event.key==='Enter'){search()}">
+            <button type="button" class="btn btn-warning btn-lg px-4" onclick="search()">
+              <i class="bi bi-search"></i> Tìm
+            </button>
+          </form>
+          <div id="result"></div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <script src="members_full_with_vehicle.js"></script>
+
+
     <script>
-        function formatMember(m, highlight = false) {
-        const content = `
-          ${m.name} - ${m.unit}<br>
-          Thông tin tàu: buồng ${m.room} – toa ${m.coach}<br>
-          Di chuyển tại Ninh Bình: ${m.vehicle}<br>
-          Thông tin khách sạn: Đang cập nhật
-        `;
-        const li = document.createElement("li");
-        li.className = "list-group-item" + (highlight ? " text-success fw-bold" : "");
-        li.innerHTML = content; // Sử dụng innerHTML để hỗ trợ <br>
-        return li;
-      }
+        // <-- Dán const phongDuThuyen = ... vào đây! -->
+        // Để demo mình để một mảng mẫu nhỏ, bạn thay bằng toàn bộ danh sách đã xuất file .js nhé
+        const phongDuThuyen = [
+          {
+          "name": "TRẦN HÙNG",
+          "unit": "BGĐ",
+          "date_of_birth": "01/01/1967",
+          "cccd": "048067002926",
+          "room": 2,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 222,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "ĐOÀN PHƯỚC HIỆP",
+          "unit": "NGOẠI",
+          "date_of_birth": "15/09/1988",
+          "cccd": "062088005940",
+          "room": 13,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 218,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "VÕ VĂN CƯỜNG",
+          "unit": "IVF",
+          "date_of_birth": "12/02/1994",
+          "cccd": "051094013869",
+          "room": 14,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 218,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ HỮU DŨNG",
+          "unit": "BTC",
+          "date_of_birth": "18/10/1986",
+          "cccd": "044086010731",
+          "room": 5,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 217,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ PHAN NGỌC BÍCH",
+          "unit": "TTBSGĐ CL",
+          "date_of_birth": "01/05/1987",
+          "cccd": "046187005494",
+          "room": 6,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 217,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THỊ MINH NGUYỆT",
+          "unit": "NHI SƠ SINH",
+          "date_of_birth": "05/08/1989",
+          "cccd": "066189008645",
+          "room": 7,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 215,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HUỲNH NGỌC KHÔI CÁT",
+          "unit": "NHI",
+          "date_of_birth": "09/09/1991",
+          "cccd": "048191003655",
+          "room": 8,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 215,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ MỸ DUYÊN",
+          "unit": "RHM",
+          "date_of_birth": "15/03/1993",
+          "cccd": "048193007147",
+          "room": 11,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 211,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRƯƠNG THỊ THANH TRANG",
+          "unit": "RHM",
+          "date_of_birth": "25/08/1991",
+          "cccd": "048191001280",
+          "room": 12,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 211,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN QUÂN",
+          "unit": "CNTT",
+          "date_of_birth": "13/01/1996",
+          "cccd": "048096005578",
+          "room": 1,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 201,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN TRƯƠNG VĂN",
+          "unit": "CNTT",
+          "date_of_birth": "04/02/1989",
+          "cccd": "048089003210",
+          "room": 4,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 201,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRƯƠNG QUỐC ĐẠT",
+          "unit": "KỸ THUẬT",
+          "date_of_birth": "13/03/1987",
+          "cccd": "044087005759",
+          "room": 15,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 209,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HUỲNH VĂN LỘC",
+          "unit": "KỸ THUẬT",
+          "date_of_birth": "14/04/1994",
+          "cccd": "049094015276",
+          "room": 16,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 209,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ MỸ LÀNH",
+          "unit": "CĐHA",
+          "date_of_birth": "10/08/1989",
+          "cccd": "049189008794",
+          "room": 17,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 216,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THỊ TUYẾT NGÂN",
+          "unit": "IVF",
+          "date_of_birth": "10/03/1993",
+          "cccd": "049193011275",
+          "room": 18,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 216,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THANH NHÀN",
+          "unit": "BSTV",
+          "date_of_birth": "20/11/1995",
+          "cccd": "044195000290",
+          "room": 19,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 207,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ THÙY TRANG",
+          "unit": "NHŨ",
+          "date_of_birth": "13/12/1988",
+          "cccd": "049188005226 ",
+          "room": 20,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 207,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THANH TÙNG",
+          "unit": "KHTH",
+          "date_of_birth": "16/10/1993",
+          "cccd": "049093000574",
+          "room": 21,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 212,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THÁI VŨ",
+          "unit": "QLLT",
+          "date_of_birth": "01/08/1994",
+          "cccd": "049094014086",
+          "room": 22,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 212,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HOÀNG MINH QUỐC NGHĨA",
+          "unit": "CĐHA",
+          "date_of_birth": "23/11/1996",
+          "cccd": "046096012894",
+          "room": 23,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 106,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "THÁI MINH TUỆ",
+          "unit": "ĐÔNG Y - PHCN",
+          "date_of_birth": "09/06/1989",
+          "cccd": "048089007759",
+          "room": 24,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 106,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN CÔNG MẪN",
+          "unit": "HSCC - ĐQ",
+          "date_of_birth": "04/01/1996",
+          "cccd": "049096013520",
+          "room": 25,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 210,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ VIẾT MẪN",
+          "unit": "XÉT NGHIỆM",
+          "date_of_birth": "20/05/1994",
+          "cccd": "048094005237",
+          "room": 26,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 210,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ NGỌC AN",
+          "unit": "NHI",
+          "date_of_birth": "24/03/1990",
+          "cccd": "049190021295",
+          "room": 27,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 220,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THỊ GIANG",
+          "unit": "NHI",
+          "date_of_birth": "10/01/1992",
+          "cccd": "049192012247",
+          "room": 28,
+          "coach": "6A",
+          "vehicle": "Xe 2",
+          "elegant": 220,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ THU HẰNG",
+          "unit": "PHỤ SẢN",
+          "date_of_birth": "21/08/1991",
+          "cccd": "049191018757",
+          "room": 1,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 101,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ THANH THÚY",
+          "unit": "PHỤ SẢN",
+          "date_of_birth": "13/02/1983",
+          "cccd": "049183005588",
+          "room": 2,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 101,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "VÕ THỊ THU THẢO",
+          "unit": "CƠ XƯƠNG KHỚP",
+          "date_of_birth": "09/07/1991",
+          "cccd": "049191019353",
+          "room": 3,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 102,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THỊ THÙY LINH",
+          "unit": "PHỤ SẢN",
+          "date_of_birth": "12/12/1991",
+          "cccd": "045191003262",
+          "room": 5,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 103,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN THỊ VY",
+          "unit": "TMH",
+          "date_of_birth": "21/05/1991",
+          "cccd": "049191008452",
+          "room": 6,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 103,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THÙY BẢO QUỲNH",
+          "unit": "DƯỢC",
+          "date_of_birth": "04/11/1995",
+          "cccd": "068195011895",
+          "room": 7,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 118,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ NGỌC DIỄM",
+          "unit": "DƯỢC",
+          "date_of_birth": "22/05/1995",
+          "cccd": "062195004292",
+          "room": 8,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 118,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ KIỀU TRINH",
+          "unit": "KIỂM SOÁT CHẤT LƯỢNG",
+          "date_of_birth": "20/05/1992",
+          "cccd": "048192000561",
+          "room": 9,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 105,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "CHÂU THỊ HẬU",
+          "unit": "MARKETING",
+          "date_of_birth": "01/01/1996",
+          "cccd": "049196002283",
+          "room": 10,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 105,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "PHAN THÀNH DANH",
+          "unit": "VẬT TƯ",
+          "date_of_birth": "09/07/1989",
+          "cccd": "048089001343",
+          "room": 11,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 108,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HỒ VĂN TUẤN",
+          "unit": "CANTEEN",
+          "date_of_birth": "12/09/1996",
+          "cccd": "048096005445",
+          "room": 12,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 108,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ THANH MAI",
+          "unit": "CNTT",
+          "date_of_birth": "29/01/1988",
+          "cccd": "051188013606",
+          "room": 17,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 107,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "PHẠM THỊ PHƯƠNG THẢO",
+          "unit": "CNTT",
+          "date_of_birth": "10/05/1989",
+          "cccd": "049189002862",
+          "room": 10,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 107,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ VÂN",
+          "unit": "XÉT NGHIỆM",
+          "date_of_birth": "02/12/1993",
+          "cccd": "048193007042",
+          "room": 13,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 110,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "PHÙNG THỊ KIM NHUNG",
+          "unit": "NỘI",
+          "date_of_birth": "06/05/1992",
+          "cccd": "049192004467",
+          "room": 14,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 110,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ THỊ TÂM",
+          "unit": "XÉT NGHIỆM",
+          "date_of_birth": "14/12/1994",
+          "cccd": "040194025130",
+          "room": 15,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 109,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HÀ CẨM THU",
+          "unit": "SHPT",
+          "date_of_birth": "04/10/1982",
+          "cccd": "049182012624",
+          "room": 16,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 109,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN HƯƠNG BÁCH THẢO",
+          "unit": "MARKETING",
+          "date_of_birth": "23/04/1994",
+          "cccd": "045194011155",
+          "room": 9,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 112,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ SEN",
+          "unit": "TTBSGĐ",
+          "date_of_birth": "04/05/1992",
+          "cccd": "049192019106",
+          "room": 18,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 112,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ MAI ANH",
+          "unit": "MARKETING",
+          "date_of_birth": "24/10/1992",
+          "cccd": "048192000363",
+          "room": 21,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 203,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THỊ MAI THOA",
+          "unit": "RHM",
+          "date_of_birth": "01/11/1988",
+          "cccd": "049188017653",
+          "room": 23,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 203,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "PHẠM THỊ MỸ PHƯƠNG",
+          "unit": "TTBSGĐ CL",
+          "date_of_birth": "20/07/1985",
+          "cccd": "049185009162",
+          "room": 19,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 116,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN HOÀNG HOÀI ÂN",
+          "unit": "TTBSGĐ CL",
+          "date_of_birth": "12/08/1990",
+          "cccd": "049190007330",
+          "room": 20,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 116,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HUỲNH THỊ BẢO QUYÊN",
+          "unit": "VẬT TƯ",
+          "date_of_birth": "19/09/1982",
+          "cccd": "048182000784",
+          "room": 22,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 205,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "HOÀNG THỊ PHƯƠNG TRINH",
+          "unit": "MARKETING",
+          "date_of_birth": "17/09/1995",
+          "cccd": "046195002345",
+          "room": 24,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 205,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN THU THẢO",
+          "unit": "KHTH",
+          "date_of_birth": "04/08/1989",
+          "cccd": "052189011999",
+          "room": 4,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 111,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "LÊ HOÀNG TRÂN CHÂU",
+          "unit": "BTC",
+          "date_of_birth": "29/03/1999",
+          "cccd": "048199006668",
+          "room": 27,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 111,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "NGUYỄN ĐÌNH BẢO",
+          "unit": "CNTT",
+          "date_of_birth": "01/01/1990",
+          "cccd": "049090000770",
+          "room": 3,
+          "coach": "6A",
+          "vehicle": "Xe 1",
+          "elegant": 115,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "VÕ THỊ NHẠN",
+          "unit": "BTC",
+          "date_of_birth": "10/06/1988",
+          "cccd": "045188007412",
+          "room": 25,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 202,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "PHAN THỊ THANH XUÂN",
+          "unit": "BTC",
+          "date_of_birth": "26/02/1987",
+          "cccd": "048187003119",
+          "room": 26,
+          "coach": 2,
+          "vehicle": "Xe 2",
+          "elegant": 202,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "ĐINH CÔNG VŨ",
+          "unit": "BTC",
+          "date_of_birth": "14/09/1994",
+          "cccd": "049094005141",
+          "room": 28,
+          "coach": 2,
+          "vehicle": "Xe 1",
+          "elegant": 206,
+          "hotel_room": "Đang cập nhật"
+        },
+        {
+          "name": "TRẦN ĐỨC THẮNG",
+          "unit": "BTC",
+          "date_of_birth": "22/12/1991",
+          "cccd": "014091005301",
+          "room": 17,
+          "coach": 5,
+          "vehicle": "Xe 2",
+          "elegant": 208,
+          "hotel_room": "Đang cập nhật"
+        }
+      ];
 
-        function searchMembers() {
-          const input = document.getElementById("searchInput").value.trim().toUpperCase();
-          const resultBox = document.getElementById("resultBox");
-          const resultList = document.getElementById("resultList");
-          resultList.innerHTML = "";
-
-          const matchedList = members.filter(m => m.name.includes(input));
-          if (matchedList.length === 0) {
-            resultBox.classList.remove("d-none");
-            resultList.innerHTML = `<li class="list-group-item text-danger">❌ Không tìm thấy "${input}"</li>`;
+        function search() {
+          const key = document.getElementById('keyword').value.trim().toLowerCase();
+          const found = phongDuThuyen.find(v =>
+            v.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(
+              key.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+            )
+          );
+          const resultDiv = document.getElementById('result');
+          if (!key) {
+            resultDiv.innerHTML = '';
             return;
           }
-
-          matchedList.forEach((matched, index) => {
-            resultList.appendChild(formatMember(matched, true));
-
-            const sameHotelRoom = members.filter(m =>
-              m.hotel_room === matched.hotel_room &&
-              m.name !== matched.name
-            );
-
-            sameHotelRoom.forEach(m => resultList.appendChild(formatMember(m)));
-
-            if (index < matchedList.length - 1) {
-              const divider = document.createElement("li");
-              divider.className = "list-group-item text-muted text-center small";
-              divider.textContent = "———";
-              resultList.appendChild(divider);
-            }
-          });
-
-          resultBox.classList.remove("d-none");
+          if (!found) {
+            resultDiv.innerHTML = `<div class="notfound">Không tìm thấy thành viên nào!</div>`;
+            return;
+          }
+          // Tìm các bạn cùng elegant (trừ chính mình)
+          const roommates = phongDuThuyen
+            .filter(v => v.elegant === found.elegant && v.name !== found.name)
+            .map(v => v.name);
+          resultDiv.innerHTML = `
+            <div class="info-card">
+              <h2>${found.name}</h2>
+              <div><span class="label">Đơn vị:</span> ${found.unit}</div>
+              <div><span class="label">Ngày sinh:</span> ${found.date_of_birth}</div>
+              <div><span class="label">CCCD:</span> ${found.cccd}</div>
+              <div><span class="label">Thông tin tàu hỏa:</div>
+              <li><span class="label">Giường tàu:</span> ${found.room}</li>
+              <li><span class="label">Toa tàu:</span> ${found.coach}</li>
+              <div><span class="label">Xe di chuyển tại Ninh Bình:</span> ${found.vehicle}</div>
+              <div><span class="label">Phòng khách sạn:</span> ${found.hotel_room}</div>
+              <div><span class="label">Phòng du thuyền:</span> ${found.elegant}</div>
+              ${roommates.length > 0
+                ? `<div class="roommates"><b>Người ở cùng khách sạn và du thuyền:</b> ${roommates.join(", ")}</div>`
+                : `<div class="roommates"><b>Không có ai ở cùng phòng khách sạn và du thuyền.</b></div>`
+              }
+            </div>
+          `;
         }
     </script>
 
