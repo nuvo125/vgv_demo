@@ -354,7 +354,7 @@
             <input type="text"
                    class="form-control form-control-lg"
                    id="keyword"
-                   placeholder="Nhập tên cần tìm..."
+                   placeholder="Nhập họ và tên cần tìm..."
                    onkeypress="if(event.key==='Enter'){search()}">
             <button type="button" class="btn btn-warning btn-lg px-4" onclick="search()">
               <i class="bi bi-search"></i>
@@ -370,12 +370,10 @@
 
 
     <script>
-        // <-- Dán const phongDuThuyen = ... vào đây! -->
-        // Để demo mình để một mảng mẫu nhỏ, bạn thay bằng toàn bộ danh sách đã xuất file .js nhé
         const phongDuThuyen = [
           {
           "name": "TRẦN HÙNG",
-          "unit": "Thành viên danh dự",
+          "unit": "BGĐ",
           "date_of_birth": "01/01/1967",
           "cccd": "048067002926",
           "room": 2,
@@ -1003,31 +1001,33 @@
       ];
 
         function search() {
-          const key = document.getElementById('keyword').value.trim().toLowerCase();
-          const found = phongDuThuyen.find(v =>
-            v.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(
-              key.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-            )
-          );
-          const resultDiv = document.getElementById('result');
-          if (!key) {
-            resultDiv.innerHTML = '';
-            return;
-          }
-          if (!found) {
-            resultDiv.innerHTML = `<div class="notfound">Không tìm thấy thành viên nào!</div>`;
-            return;
-          }
-          // Tìm các bạn cùng elegant (trừ chính mình)
-          const roommates = phongDuThuyen
-            .filter(v => v.elegant === found.elegant && v.name !== found.name)
-            .map(v => v.name);
-          resultDiv.innerHTML = `
-            <div class="info-card">
+    const key = document.getElementById('keyword').value.trim().toLowerCase();
+    const resultDiv = document.getElementById('result');
+    if (!key) {
+      resultDiv.innerHTML = '';
+      return;
+    }
+    // Tìm tất cả thành viên trùng (so sánh không dấu, không phân biệt hoa thường)
+    const normalizedKey = key.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    const foundList = phongDuThuyen.filter(v =>
+      v.name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(normalizedKey)
+    );
+    if (foundList.length === 0) {
+      resultDiv.innerHTML = `<div class="notfound">Không tìm thấy thành viên nào!</div>`;
+      return;
+    }
+    // Tạo HTML cho từng người
+    const html = foundList.map(found => {
+      // Tìm các bạn cùng elegant (trừ chính mình)
+      const roommates = phongDuThuyen
+        .filter(v => v.elegant === found.elegant && v.name !== found.name)
+        .map(v => v.name);
+      return `
+        <div class="info-card">
               <h2>${found.name}</h2>
               <div><span class="label">Đơn vị:</span> ${found.unit}</div>
               <div><span class="label">Ngày sinh:</span> ${found.date_of_birth}</div>
-              
+
               <div><span class="label">Thông tin tàu hỏa:</div>
               <li><span class="label">Giường tàu:</span> ${found.room}</li>
               <li><span class="label">Toa tàu:</span> ${found.coach}</li>
@@ -1039,8 +1039,11 @@
                 : `<div class="roommates"><b>Không có ai ở cùng phòng khách sạn và du thuyền.</b></div>`
               }
             </div>
-          `;
-        }
+      `;
+    }).join("");
+    resultDiv.innerHTML = html;
+  }
+
     </script>
 
     <section class="container py-3" id="itinerary">
