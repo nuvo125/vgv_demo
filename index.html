@@ -371,634 +371,691 @@
 
         <script>
             const phongDuThuyen = [
-              {
-              "name": "TRẦN HÙNG",
-              "unit": "Thành viên danh dự",
-              "date_of_birth": "01/01/1967",
-              "cccd": "048067002926",
-              "room": 2,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 222,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "ĐOÀN PHƯỚC HIỆP",
-              "unit": "NGOẠI",
-              "date_of_birth": "15/09/1988",
-              "cccd": "062088005940",
-              "room": 13,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 218,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "VÕ VĂN CƯỜNG",
-              "unit": "IVF",
-              "date_of_birth": "12/02/1994",
-              "cccd": "051094013869",
-              "room": 14,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 218,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ HỮU DŨNG",
-              "unit": "BTC",
-              "date_of_birth": "18/10/1986",
-              "cccd": "044086010731",
-              "room": 5,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 217,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ PHAN NGỌC BÍCH",
-              "unit": "TTBSGĐ CL",
-              "date_of_birth": "01/05/1987",
-              "cccd": "046187005494",
-              "room": 6,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 217,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THỊ MINH NGUYỆT",
-              "unit": "NHI SƠ SINH",
-              "date_of_birth": "05/08/1989",
-              "cccd": "066189008645",
-              "room": 7,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 215,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HUỲNH NGỌC KHÔI CÁT",
-              "unit": "NHI",
-              "date_of_birth": "09/09/1991",
-              "cccd": "048191003655",
-              "room": 8,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 215,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ MỸ DUYÊN",
-              "unit": "RHM",
-              "date_of_birth": "15/03/1993",
-              "cccd": "048193007147",
-              "room": 11,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 211,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRƯƠNG THỊ THANH TRANG",
-              "unit": "RHM",
-              "date_of_birth": "25/08/1991",
-              "cccd": "048191001280",
-              "room": 12,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 211,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN QUÂN",
-              "unit": "CNTT",
-              "date_of_birth": "13/01/1996",
-              "cccd": "048096005578",
-              "room": 1,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 201,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN TRƯƠNG VĂN",
-              "unit": "CNTT",
-              "date_of_birth": "04/02/1989",
-              "cccd": "048089003210",
-              "room": 4,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 201,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRƯƠNG QUỐC ĐẠT",
-              "unit": "KỸ THUẬT",
-              "date_of_birth": "13/03/1987",
-              "cccd": "044087005759",
-              "room": 15,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 209,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HUỲNH VĂN LỘC",
-              "unit": "KỸ THUẬT",
-              "date_of_birth": "14/04/1994",
-              "cccd": "049094015276",
-              "room": 16,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 209,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ MỸ LÀNH",
-              "unit": "CĐHA",
-              "date_of_birth": "10/08/1989",
-              "cccd": "049189008794",
-              "room": 17,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 216,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THỊ TUYẾT NGÂN",
-              "unit": "IVF",
-              "date_of_birth": "10/03/1993",
-              "cccd": "049193011275",
-              "room": 18,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 216,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THANH NHÀN",
-              "unit": "BSTV",
-              "date_of_birth": "20/11/1995",
-              "cccd": "044195000290",
-              "room": 19,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 207,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ THÙY TRANG",
-              "unit": "NHŨ",
-              "date_of_birth": "13/12/1988",
-              "cccd": "049188005226 ",
-              "room": 20,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 207,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THANH TÙNG",
-              "unit": "KHTH",
-              "date_of_birth": "16/10/1993",
-              "cccd": "049093000574",
-              "room": 21,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 212,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THÁI VŨ",
-              "unit": "QLLT",
-              "date_of_birth": "01/08/1994",
-              "cccd": "049094014086",
-              "room": 22,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 212,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HOÀNG MINH QUỐC NGHĨA",
-              "unit": "CĐHA",
-              "date_of_birth": "23/11/1996",
-              "cccd": "046096012894",
-              "room": 23,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 106,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "THÁI MINH TUỆ",
-              "unit": "ĐÔNG Y - PHCN",
-              "date_of_birth": "09/06/1989",
-              "cccd": "048089007759",
-              "room": 24,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 106,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN CÔNG MẪN",
-              "unit": "HSCC - ĐQ",
-              "date_of_birth": "04/01/1996",
-              "cccd": "049096013520",
-              "room": 25,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 210,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ VIẾT MẪN",
-              "unit": "XÉT NGHIỆM",
-              "date_of_birth": "20/05/1994",
-              "cccd": "048094005237",
-              "room": 26,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 210,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ NGỌC AN",
-              "unit": "NHI",
-              "date_of_birth": "24/03/1990",
-              "cccd": "049190021295",
-              "room": 27,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 220,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THỊ GIANG",
-              "unit": "NHI",
-              "date_of_birth": "10/01/1992",
-              "cccd": "049192012247",
-              "room": 28,
-              "coach": "6A",
-              "vehicle": "Xe 2",
-              "elegant": 220,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ THU HẰNG",
-              "unit": "PHỤ SẢN",
-              "date_of_birth": "21/08/1991",
-              "cccd": "049191018757",
-              "room": 1,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 101,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ THANH THÚY",
-              "unit": "PHỤ SẢN",
-              "date_of_birth": "13/02/1983",
-              "cccd": "049183005588",
-              "room": 2,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 101,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "VÕ THỊ THU THẢO",
-              "unit": "CƠ XƯƠNG KHỚP",
-              "date_of_birth": "09/07/1991",
-              "cccd": "049191019353",
-              "room": 3,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 102,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THỊ THÙY LINH",
-              "unit": "PHỤ SẢN",
-              "date_of_birth": "12/12/1991",
-              "cccd": "045191003262",
-              "room": 5,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 103,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN THỊ VY",
-              "unit": "TMH",
-              "date_of_birth": "21/05/1991",
-              "cccd": "049191008452",
-              "room": 6,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 103,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THÙY BẢO QUỲNH",
-              "unit": "DƯỢC",
-              "date_of_birth": "04/11/1995",
-              "cccd": "068195011895",
-              "room": 7,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 118,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ NGỌC DIỄM",
-              "unit": "DƯỢC",
-              "date_of_birth": "22/05/1995",
-              "cccd": "062195004292",
-              "room": 8,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 118,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ KIỀU TRINH",
-              "unit": "KIỂM SOÁT CHẤT LƯỢNG",
-              "date_of_birth": "20/05/1992",
-              "cccd": "048192000561",
-              "room": 9,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 105,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "CHÂU THỊ HẬU",
-              "unit": "MARKETING",
-              "date_of_birth": "01/01/1996",
-              "cccd": "049196002283",
-              "room": 10,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 105,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "PHAN THÀNH DANH",
-              "unit": "VẬT TƯ",
-              "date_of_birth": "09/07/1989",
-              "cccd": "048089001343",
-              "room": 11,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 108,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HỒ VĂN TUẤN",
-              "unit": "CANTEEN",
-              "date_of_birth": "12/09/1996",
-              "cccd": "048096005445",
-              "room": 12,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 108,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ THANH MAI",
-              "unit": "CNTT",
-              "date_of_birth": "29/01/1988",
-              "cccd": "051188013606",
-              "room": 17,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 107,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "PHẠM THỊ PHƯƠNG THẢO",
-              "unit": "CNTT",
-              "date_of_birth": "10/05/1989",
-              "cccd": "049189002862",
-              "room": 10,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 107,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ VÂN",
-              "unit": "XÉT NGHIỆM",
-              "date_of_birth": "02/12/1993",
-              "cccd": "048193007042",
-              "room": 13,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 110,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "PHÙNG THỊ KIM NHUNG",
-              "unit": "NỘI",
-              "date_of_birth": "06/05/1992",
-              "cccd": "049192004467",
-              "room": 14,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 110,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ THỊ TÂM",
-              "unit": "XÉT NGHIỆM",
-              "date_of_birth": "14/12/1994",
-              "cccd": "040194025130",
-              "room": 15,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 109,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HÀ CẨM THU",
-              "unit": "SHPT",
-              "date_of_birth": "04/10/1982",
-              "cccd": "049182012624",
-              "room": 16,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 109,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN HƯƠNG BÁCH THẢO",
-              "unit": "MARKETING",
-              "date_of_birth": "23/04/1994",
-              "cccd": "045194011155",
-              "room": 9,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 112,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ SEN",
-              "unit": "TTBSGĐ",
-              "date_of_birth": "04/05/1992",
-              "cccd": "049192019106",
-              "room": 18,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 112,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ MAI ANH",
-              "unit": "MARKETING",
-              "date_of_birth": "24/10/1992",
-              "cccd": "048192000363",
-              "room": 21,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 203,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THỊ MAI THOA",
-              "unit": "RHM",
-              "date_of_birth": "01/11/1988",
-              "cccd": "049188017653",
-              "room": 23,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 203,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "PHẠM THỊ MỸ PHƯƠNG",
-              "unit": "TTBSGĐ CL",
-              "date_of_birth": "20/07/1985",
-              "cccd": "049185009162",
-              "room": 19,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 116,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN HOÀNG HOÀI ÂN",
-              "unit": "TTBSGĐ CL",
-              "date_of_birth": "12/08/1990",
-              "cccd": "049190007330",
-              "room": 20,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 116,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HUỲNH THỊ BẢO QUYÊN",
-              "unit": "VẬT TƯ",
-              "date_of_birth": "19/09/1982",
-              "cccd": "048182000784",
-              "room": 22,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 205,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "HOÀNG THỊ PHƯƠNG TRINH",
-              "unit": "MARKETING",
-              "date_of_birth": "17/09/1995",
-              "cccd": "046195002345",
-              "room": 24,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 205,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN THU THẢO",
-              "unit": "KHTH",
-              "date_of_birth": "04/08/1989",
-              "cccd": "052189011999",
-              "room": 4,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 111,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "LÊ HOÀNG TRÂN CHÂU",
-              "unit": "BTC",
-              "date_of_birth": "29/03/1999",
-              "cccd": "048199006668",
-              "room": 27,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 111,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "NGUYỄN ĐÌNH BẢO",
-              "unit": "CNTT",
-              "date_of_birth": "01/01/1990",
-              "cccd": "049090000770",
-              "room": 3,
-              "coach": "6A",
-              "vehicle": "Xe 1",
-              "elegant": 115,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "VÕ THỊ NHẠN",
-              "unit": "BTC",
-              "date_of_birth": "10/06/1988",
-              "cccd": "045188007412",
-              "room": 25,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 202,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "PHAN THỊ THANH XUÂN",
-              "unit": "BTC",
-              "date_of_birth": "26/02/1987",
-              "cccd": "048187003119",
-              "room": 26,
-              "coach": 2,
-              "vehicle": "Xe 2",
-              "elegant": 202,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "ĐINH CÔNG VŨ",
-              "unit": "BTC",
-              "date_of_birth": "14/09/1994",
-              "cccd": "049094005141",
-              "room": 28,
-              "coach": 2,
-              "vehicle": "Xe 1",
-              "elegant": 206,
-              "hotel_room": "Đang cập nhật"
-            },
-            {
-              "name": "TRẦN ĐỨC THẮNG",
-              "unit": "BTC",
-              "date_of_birth": "22/12/1991",
-              "cccd": "014091005301",
-              "room": 17,
-              "coach": 5,
-              "vehicle": "Xe 2",
-              "elegant": 208,
-              "hotel_room": "Đang cập nhật"
-            }
-          ];
+  {
+    "name": "TRẦN HÙNG",
+    "unit": "Thành viên danh dự",
+    "date_of_birth": "01/01/1967",
+    "cccd": "048067002926",
+    "room": 2,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 222,
+    "hotel_room": "Đang cập nhật",
+    "check": 1
+  },
+  {
+    "name": "ĐOÀN PHƯỚC HIỆP",
+    "unit": "NGOẠI",
+    "date_of_birth": "15/09/1988",
+    "cccd": "062088005940",
+    "room": 13,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 218,
+    "hotel_room": "Đang cập nhật",
+    "check": 2
+  },
+  {
+    "name": "VÕ VĂN CƯỜNG",
+    "unit": "IVF",
+    "date_of_birth": "12/02/1994",
+    "cccd": "051094013869",
+    "room": 14,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 218,
+    "hotel_room": "Đang cập nhật",
+    "check": 2
+  },
+  {
+    "name": "LÊ HỮU DŨNG",
+    "unit": "BTC",
+    "date_of_birth": "18/10/1986",
+    "cccd": "044086010731",
+    "room": 5,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 217,
+    "hotel_room": "Đang cập nhật",
+    "check": 3
+  },
+  {
+    "name": "LÊ PHAN NGỌC BÍCH",
+    "unit": "TTBSGĐ CL",
+    "date_of_birth": "01/05/1987",
+    "cccd": "046187005494",
+    "room": 6,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 217,
+    "hotel_room": "Đang cập nhật",
+    "check": 3
+  },
+  {
+    "name": "LÊ THỊ MINH NGUYỆT",
+    "unit": "NHI SƠ SINH",
+    "date_of_birth": "05/08/1989",
+    "cccd": "066189008645",
+    "room": 7,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 215,
+    "hotel_room": "Đang cập nhật",
+    "check": 4
+  },
+  {
+    "name": "HUỲNH NGỌC KHÔI CÁT",
+    "unit": "NHI",
+    "date_of_birth": "09/09/1991",
+    "cccd": "048191003655",
+    "room": 8,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 215,
+    "hotel_room": "Đang cập nhật",
+    "check": 4
+  },
+  {
+    "name": "NGUYỄN THỊ MỸ DUYÊN",
+    "unit": "RHM",
+    "date_of_birth": "15/03/1993",
+    "cccd": "048193007147",
+    "room": 11,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 211,
+    "hotel_room": "Đang cập nhật",
+    "check": 5
+  },
+  {
+    "name": "TRƯƠNG THỊ THANH TRANG",
+    "unit": "RHM",
+    "date_of_birth": "25/08/1991",
+    "cccd": "048191001280",
+    "room": 12,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 211,
+    "hotel_room": "Đang cập nhật",
+    "check": 5
+  },
+  {
+    "name": "TRẦN QUÂN",
+    "unit": "CNTT",
+    "date_of_birth": "13/01/1996",
+    "cccd": "048096005578",
+    "room": 1,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 201,
+    "hotel_room": "Đang cập nhật",
+    "check": 6
+  },
+  {
+    "name": "TRẦN TRƯƠNG VĂN",
+    "unit": "CNTT",
+    "date_of_birth": "04/02/1989",
+    "cccd": "048089003210",
+    "room": 4,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 201,
+    "hotel_room": "Đang cập nhật",
+    "check": 6
+  },
+  {
+    "name": "TRƯƠNG QUỐC ĐẠT",
+    "unit": "KỸ THUẬT",
+    "date_of_birth": "13/03/1987",
+    "cccd": "044087005759",
+    "room": 15,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 209,
+    "hotel_room": "Đang cập nhật",
+    "check": 7
+  },
+  {
+    "name": "HUỲNH VĂN LỘC",
+    "unit": "KỸ THUẬT",
+    "date_of_birth": "14/04/1994",
+    "cccd": "049094015276",
+    "room": 16,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 209,
+    "hotel_room": "Đang cập nhật",
+    "check": 7
+  },
+  {
+    "name": "NGUYỄN THỊ MỸ LÀNH",
+    "unit": "CĐHA",
+    "date_of_birth": "10/08/1989",
+    "cccd": "049189008794",
+    "room": 17,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 216,
+    "hotel_room": "Đang cập nhật",
+    "check": 8
+  },
+  {
+    "name": "LÊ THỊ TUYẾT NGÂN",
+    "unit": "IVF",
+    "date_of_birth": "10/03/1993",
+    "cccd": "049193011275",
+    "room": 18,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 216,
+    "hotel_room": "Đang cập nhật",
+    "check": 8
+  },
+  {
+    "name": "LÊ THANH NHÀN",
+    "unit": "BSTV",
+    "date_of_birth": "20/11/1995",
+    "cccd": "044195000290",
+    "room": 19,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 207,
+    "hotel_room": "Đang cập nhật",
+    "check": 9
+  },
+  {
+    "name": "NGUYỄN THỊ THÙY TRANG",
+    "unit": "NHŨ",
+    "date_of_birth": "13/12/1988",
+    "cccd": "049188005226 ",
+    "room": 20,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 207,
+    "hotel_room": "Đang cập nhật",
+    "check": 9
+  },
+  {
+    "name": "NGUYỄN THANH TÙNG",
+    "unit": "KHTH",
+    "date_of_birth": "16/10/1993",
+    "cccd": "049093000574",
+    "room": 21,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 212,
+    "hotel_room": "Đang cập nhật",
+    "check": 10
+  },
+  {
+    "name": "NGUYỄN THÁI VŨ",
+    "unit": "QLLT",
+    "date_of_birth": "01/08/1994",
+    "cccd": "049094014086",
+    "room": 22,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 212,
+    "hotel_room": "Đang cập nhật",
+    "check": 10
+  },
+  {
+    "name": "HOÀNG MINH QUỐC NGHĨA",
+    "unit": "CĐHA",
+    "date_of_birth": "23/11/1996",
+    "cccd": "046096012894",
+    "room": 23,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 106,
+    "hotel_room": "Đang cập nhật",
+    "check": 11
+  },
+  {
+    "name": "THÁI MINH TUỆ",
+    "unit": "ĐÔNG Y - PHCN",
+    "date_of_birth": "09/06/1989",
+    "cccd": "048089007759",
+    "room": 24,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 106,
+    "hotel_room": "Đang cập nhật",
+    "check": 11
+  },
+  {
+    "name": "TRẦN CÔNG MẪN",
+    "unit": "HSCC - ĐQ",
+    "date_of_birth": "04/01/1996",
+    "cccd": "049096013520",
+    "room": 25,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 210,
+    "hotel_room": "Đang cập nhật",
+    "check": 12
+  },
+  {
+    "name": "LÊ VIẾT MẪN",
+    "unit": "XÉT NGHIỆM",
+    "date_of_birth": "20/05/1994",
+    "cccd": "048094005237",
+    "room": 26,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 210,
+    "hotel_room": "Đang cập nhật",
+    "check": 12
+  },
+  {
+    "name": "NGUYỄN THỊ NGỌC AN",
+    "unit": "NHI",
+    "date_of_birth": "24/03/1990",
+    "cccd": "049190021295",
+    "room": 27,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 220,
+    "hotel_room": "Đang cập nhật",
+    "check": 13
+  },
+  {
+    "name": "LÊ THỊ GIANG",
+    "unit": "NHI",
+    "date_of_birth": "10/01/1992",
+    "cccd": "049192012247",
+    "room": 28,
+    "coach": "6A",
+    "vehicle": "Xe 2",
+    "elegant": 220,
+    "hotel_room": "Đang cập nhật",
+    "check": 13
+  },
+  {
+    "name": "NGUYỄN THỊ THU HẰNG",
+    "unit": "PHỤ SẢN",
+    "date_of_birth": "21/08/1991",
+    "cccd": "049191018757",
+    "room": 1,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 101,
+    "hotel_room": "Đang cập nhật",
+    "check": 14
+  },
+  {
+    "name": "NGUYỄN THỊ THANH THÚY",
+    "unit": "PHỤ SẢN",
+    "date_of_birth": "13/02/1983",
+    "cccd": "049183005588",
+    "room": 2,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 101,
+    "hotel_room": "Đang cập nhật",
+    "check": 14
+  },
+  {
+    "name": "VÕ THỊ THU THẢO",
+    "unit": "CƠ XƯƠNG KHỚP",
+    "date_of_birth": "09/07/1991",
+    "cccd": "049191019353",
+    "room": 3,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 102,
+    "hotel_room": "Đang cập nhật",
+    "check": 15
+  },
+  {
+    "name": "LÊ THỊ THÙY LINH",
+    "unit": "PHỤ SẢN",
+    "date_of_birth": "12/12/1991",
+    "cccd": "045191003262",
+    "room": 5,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 103,
+    "hotel_room": "Đang cập nhật",
+    "check": 16
+  },
+  {
+    "name": "TRẦN THỊ VY",
+    "unit": "TMH",
+    "date_of_birth": "21/05/1991",
+    "cccd": "049191008452",
+    "room": 6,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 103,
+    "hotel_room": "Đang cập nhật",
+    "check": 16
+  },
+  {
+    "name": "LÊ THÙY BẢO QUỲNH",
+    "unit": "DƯỢC",
+    "date_of_birth": "04/11/1995",
+    "cccd": "068195011895",
+    "room": 7,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 118,
+    "hotel_room": "Đang cập nhật",
+    "check": 17
+  },
+  {
+    "name": "NGUYỄN THỊ NGỌC DIỄM",
+    "unit": "DƯỢC",
+    "date_of_birth": "22/05/1995",
+    "cccd": "062195004292",
+    "room": 8,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 118,
+    "hotel_room": "Đang cập nhật",
+    "check": 17
+  },
+  {
+    "name": "NGUYỄN THỊ KIỀU TRINH",
+    "unit": "KIỂM SOÁT CHẤT LƯỢNG",
+    "date_of_birth": "20/05/1992",
+    "cccd": "048192000561",
+    "room": 9,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 105,
+    "hotel_room": "Đang cập nhật",
+    "check": 18
+  },
+  {
+    "name": "CHÂU THỊ HẬU",
+    "unit": "MARKETING",
+    "date_of_birth": "01/01/1996",
+    "cccd": "049196002283",
+    "room": 10,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 105,
+    "hotel_room": "Đang cập nhật",
+    "check": 18
+  },
+  {
+    "name": "PHAN THÀNH DANH",
+    "unit": "VẬT TƯ",
+    "date_of_birth": "09/07/1989",
+    "cccd": "048089001343",
+    "room": 11,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 108,
+    "hotel_room": "Đang cập nhật",
+    "check": 19
+  },
+  {
+    "name": "HỒ VĂN TUẤN",
+    "unit": "CANTEEN",
+    "date_of_birth": "12/09/1996",
+    "cccd": "048096005445",
+    "room": 12,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 108,
+    "hotel_room": "Đang cập nhật",
+    "check": 19
+  },
+  {
+    "name": "NGUYỄN THỊ THANH MAI",
+    "unit": "CNTT",
+    "date_of_birth": "29/01/1988",
+    "cccd": "051188013606",
+    "room": 17,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 107,
+    "hotel_room": "Đang cập nhật",
+    "check": 20
+  },
+  {
+    "name": "PHẠM THỊ PHƯƠNG THẢO",
+    "unit": "CNTT",
+    "date_of_birth": "10/05/1989",
+    "cccd": "049189002862",
+    "room": 10,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 107,
+    "hotel_room": "Đang cập nhật",
+    "check": 20
+  },
+  {
+    "name": "NGUYỄN THỊ VÂN",
+    "unit": "XÉT NGHIỆM",
+    "date_of_birth": "02/12/1993",
+    "cccd": "048193007042",
+    "room": 13,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 110,
+    "hotel_room": "Đang cập nhật",
+    "check": 21
+  },
+  {
+    "name": "PHÙNG THỊ KIM NHUNG",
+    "unit": "NỘI",
+    "date_of_birth": "06/05/1992",
+    "cccd": "049192004467",
+    "room": 14,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 110,
+    "hotel_room": "Đang cập nhật",
+    "check": 21
+  },
+  {
+    "name": "LÊ THỊ TÂM",
+    "unit": "XÉT NGHIỆM",
+    "date_of_birth": "14/12/1994",
+    "cccd": "040194025130",
+    "room": 15,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 109,
+    "hotel_room": "Đang cập nhật",
+    "check": 22
+  },
+  {
+    "name": "HÀ CẨM THU",
+    "unit": "SHPT",
+    "date_of_birth": "04/10/1982",
+    "cccd": "049182012624",
+    "room": 16,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 109,
+    "hotel_room": "Đang cập nhật",
+    "check": 22
+  },
+  {
+    "name": "TRẦN HƯƠNG BÁCH THẢO",
+    "unit": "MARKETING",
+    "date_of_birth": "23/04/1994",
+    "cccd": "045194011155",
+    "room": 9,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 112,
+    "hotel_room": "Đang cập nhật",
+    "check": 23
+  },
+  {
+    "name": "NGUYỄN THỊ SEN",
+    "unit": "TTBSGĐ",
+    "date_of_birth": "04/05/1992",
+    "cccd": "049192019106",
+    "room": 18,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 112,
+    "hotel_room": "Đang cập nhật",
+    "check": 23
+  },
+  {
+    "name": "NGUYỄN THỊ MAI ANH",
+    "unit": "MARKETING",
+    "date_of_birth": "24/10/1992",
+    "cccd": "048192000363",
+    "room": 21,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 203,
+    "hotel_room": "Đang cập nhật",
+    "check": 24
+  },
+  {
+    "name": "NGUYỄN THỊ MAI THOA",
+    "unit": "RHM",
+    "date_of_birth": "01/11/1988",
+    "cccd": "049188017653",
+    "room": 23,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 203,
+    "hotel_room": "Đang cập nhật",
+    "check": 24
+  },
+  {
+    "name": "PHẠM THỊ MỸ PHƯƠNG",
+    "unit": "TTBSGĐ CL",
+    "date_of_birth": "20/07/1985",
+    "cccd": "049185009162",
+    "room": 19,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 116,
+    "hotel_room": "Đang cập nhật",
+    "check": 25
+  },
+  {
+    "name": "NGUYỄN HOÀNG HOÀI ÂN",
+    "unit": "TTBSGĐ CL",
+    "date_of_birth": "12/08/1990",
+    "cccd": "049190007330",
+    "room": 20,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 116,
+    "hotel_room": "Đang cập nhật",
+    "check": 25
+  },
+  {
+    "name": "HUỲNH THỊ BẢO QUYÊN",
+    "unit": "VẬT TƯ",
+    "date_of_birth": "19/09/1982",
+    "cccd": "048182000784",
+    "room": 22,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 205,
+    "hotel_room": "Đang cập nhật",
+    "check": 26
+  },
+  {
+    "name": "HOÀNG THỊ PHƯƠNG TRINH",
+    "unit": "MARKETING",
+    "date_of_birth": "17/09/1995",
+    "cccd": "046195002345",
+    "room": 24,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 205,
+    "hotel_room": "Đang cập nhật",
+    "check": 26
+  },
+  {
+    "name": "NGUYỄN THU THẢO",
+    "unit": "KHTH",
+    "date_of_birth": "04/08/1989",
+    "cccd": "052189011999",
+    "room": 4,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 111,
+    "hotel_room": "Đang cập nhật",
+    "check": 27
+  },
+  {
+    "name": "LÊ HOÀNG TRÂN CHÂU",
+    "unit": "BTC",
+    "date_of_birth": "29/03/1999",
+    "cccd": "048199006668",
+    "room": 27,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 111,
+    "hotel_room": "Đang cập nhật",
+    "check": 27
+  },
+  {
+    "name": "NGUYỄN ĐÌNH BẢO",
+    "unit": "CNTT",
+    "date_of_birth": "01/01/1990",
+    "cccd": "049090000770",
+    "room": 3,
+    "coach": "6A",
+    "vehicle": "Xe 1",
+    "elegant": 115,
+    "hotel_room": "Đang cập nhật",
+    "check": 28
+  },
+  {
+    "name": "VÕ THỊ NHẠN",
+    "unit": "BTC",
+    "date_of_birth": "10/06/1988",
+    "cccd": "045188007412",
+    "room": 25,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 202,
+    "hotel_room": "Đang cập nhật",
+    "check": 29
+  },
+  {
+    "name": "PHAN THỊ THANH XUÂN",
+    "unit": "BTC",
+    "date_of_birth": "26/02/1987",
+    "cccd": "048187003119",
+    "room": 26,
+    "coach": 2,
+    "vehicle": "Xe 2",
+    "elegant": 202,
+    "hotel_room": "Đang cập nhật",
+    "check": 29
+  },
+  {
+    "name": "ĐINH CÔNG VŨ",
+    "unit": "BTC",
+    "date_of_birth": "14/09/1994",
+    "cccd": "049094005141",
+    "room": 28,
+    "coach": 2,
+    "vehicle": "Xe 1",
+    "elegant": 206,
+    "hotel_room": "Đang cập nhật",
+    "check": 30
+  },
+  {
+    "name": "TRẦN ĐỨC THẮNG",
+    "unit": "BTC",
+    "date_of_birth": "22/12/1991",
+    "cccd": "014091005301",
+    "room": 17,
+    "coach": 5,
+    "vehicle": "Xe 2",
+    "elegant": 208,
+    "hotel_room": "Đang cập nhật",
+    "check": 28
+  }
+];
 
             function search() {
         const key = document.getElementById('keyword').value.trim().toLowerCase();
@@ -1018,9 +1075,9 @@
         }
         // Tạo HTML cho từng người
         const html = foundList.map(found => {
-          // Tìm các bạn cùng elegant (trừ chính mình)
+          // Tìm các bạn cùng check (trừ chính mình)
           const roommates = phongDuThuyen
-            .filter(v => v.elegant === found.elegant && v.name !== found.name)
+            .filter(v => v.check === found.check && v.name !== found.name)
             .map(v => v.name);
           return `
             <div class="info-card">
@@ -1853,17 +1910,18 @@
                                             lại”
                                             qua lăng kính của chính mình. </p>
                                             <p>Chủ đề 1: Tam Cốc <br>
-                                            👉 Kỳ quan sông núi và chứng tích ngàn năm giữ nước.</p>
+                                                👉 Kỳ quan sông núi và chứng tích ngàn năm giữ nước.</p>
                                             <p>Chủ đề 2: Cuộc chiến chống Nguyên - Mông lần 2 <br>
-                                            👉 Chiến thắng vang danh từ căn cứ thuỷ quân của một triều đại</p>
+                                                👉 Chiến thắng vang danh từ căn cứ thuỷ quân của một triều đại</p>
                                             <p> Chủ đề 3: Quý Minh Đại Vương <br>
-                                            👉 Thần trấn nam linh thiêng bảo vệ đất Hoa Lư</p>
+                                                👉 Thần trấn nam linh thiêng bảo vệ đất Hoa Lư</p>
                                             <p>Chủ đề 4: Vua Hùng và vị trí lịch sử <br>
-                                            👉 Thời lập quốc – Vua Hùng dựng nước, chư tướng trấn giữ bốn phương sơn hà</p>
+                                                👉 Thời lập quốc – Vua Hùng dựng nước, chư tướng trấn giữ bốn phương sơn
+                                                hà</p>
                                             <p>Chủ đề 5: Thần Nông <br>
-                                            👉 Vị thần khai sinh nền nông nghiệp Việt cổ</p>
+                                                👉 Vị thần khai sinh nền nông nghiệp Việt cổ</p>
                                             <p> Chủ đề 6: Văn minh lúa nước <br>
-                                            👉 Cội nguồn văn hóa từ đồng bằng và hạt thóc đầu tiên</p>
+                                                👉 Cội nguồn văn hóa từ đồng bằng và hạt thóc đầu tiên</p>
                                             <div class="mt-4 text-center">
                                                 <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">
                                                     Đóng
@@ -2010,7 +2068,8 @@
                                             <p>* Chủ đề 1. “Mẫu hệ và nữ quyền ở Việt Nam - Có phải là sự đúng đắn trong
                                                 quá
                                                 khứ và đích đến trong tương lai?</p>
-                                            <p> * Chủ đề 2. “Du lịch Ninh Bình - Bảo tồn hồn xưa hay theo bước hiện đại?".</p>
+                                            <p> * Chủ đề 2. “Du lịch Ninh Bình - Bảo tồn hồn xưa hay theo bước hiện
+                                                đại?".</p>
                                             <p>* Chủ đề 3: Hiệu quả điều hành khoa phòng đến từ ý chí cá nhân hay sức
                                                 mạnh
                                                 tập
