@@ -338,7 +338,14 @@
     <!--    </script>-->
 
 
-<div class="container py-5">
+<div class="container py-5 shadow bg-light">
+    <div class="container my-4">
+  <div class="d-flex align-items-center justify-content-center py-3 rounded-3 ">
+    <i class="bi bi-search-heart-fill text-warning fs-2 me-3"></i>
+    <span class="fs-4 fw-semibold ">
+      Tìm kiếm thông tin lưu trú và di chuyển
+    </span>
+</div>
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-6">
       <div class="card shadow-lg border-0">
@@ -350,7 +357,7 @@
                    placeholder="Nhập tên cần tìm..."
                    onkeypress="if(event.key==='Enter'){search()}">
             <button type="button" class="btn btn-warning btn-lg px-4" onclick="search()">
-              <i class="bi bi-search"></i> Tìm
+              <i class="bi bi-search"></i>
             </button>
           </form>
           <div id="result"></div>
