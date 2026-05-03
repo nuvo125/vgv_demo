@@ -135,46 +135,44 @@
             padding-bottom: 30px !important; 
         }
 
-        /* NAVBAR STICKY: Mỏng hơn, gọn hơn */
+        /* NAVBAR TÙY CHỌN 1: ĐẢO NỔI (FLOATING PILL) */
         .responsive-nav {
             position: sticky !important; 
-            top: -1px !important; /* Trừ hao 1px để không bị hở khe sáng khi cuộn */
+            top: 10px !important; /* Dính cách nóc 10px tạo cảm giác lơ lửng */
             
-            background: rgba(255, 255, 255, 0.98) !important; 
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85) !important; 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px); /* Hỗ trợ iOS */
             z-index: 1060 !important; 
-            box-shadow: 0 4px 15px rgba(13, 75, 86, 0.08) !important; 
+            box-shadow: 0 8px 25px rgba(13, 75, 86, 0.15), inset 0 0 0 1px rgba(255,255,255,0.5) !important; 
             
             display: flex !important; justify-content: space-around !important; align-items: center !important;
-            
-            /* Ép nhỏ chiều cao Navbar lại */
-            padding: 0.3rem 0.2rem !important; 
-            margin: 0 -10px 1.2rem -10px !important; 
-            border-radius: 0 0 12px 12px !important; 
+            padding: 0.4rem 0.3rem !important; 
+            margin: 0 10px 1.5rem 10px !important; /* Co vào ở 2 bên */
+            border-radius: 30px !important; /* Bo tròn xoe 2 đầu */
         }
 
         .responsive-nav .nav-item { flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; }
         
-        /* Bóp nhỏ các nút bấm bên trong */
         .responsive-nav .nav-link {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 0.3rem 0.1rem; width: 95% !important; margin: 0 auto !important;
-            font-size: 0.6rem !important; /* Chữ nhỏ lại một chút xíu */
-            line-height: 1.2; color: #8fa6aa; border-radius: 10px;
-            transition: all 0.2s ease;
+            padding: 0.4rem 0.1rem; width: 100% !important; margin: 0 auto !important;
+            font-size: 0.65rem !important; line-height: 1.2; color: #7a9499; 
+            border-radius: 20px; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
-        /* Thu nhỏ Icon */
-        .responsive-nav .nav-link i { 
-            font-size: 1.15rem !important; 
-            margin-bottom: 3px !important; 
-        }
+        .responsive-nav .nav-link i { font-size: 1.2rem !important; margin-bottom: 3px !important; transition: transform 0.3s; }
         
+        /* Hiệu ứng khi chọn: Nền chìm nhẹ nhàng, icon to lên 1 xíu */
         .responsive-nav .nav-link.active {
-            background-color: var(--brand-teal); color: white; font-weight: 700;
-            box-shadow: 0 3px 8px rgba(20, 106, 120, 0.2);
+            background-color: rgba(20, 106, 120, 0.08); 
+            color: var(--brand-teal-dark); font-weight: 700;
+            box-shadow: none;
         }
-        .responsive-nav .nav-link.active i { color: var(--brand-gold); }
+        .responsive-nav .nav-link.active i { 
+            color: var(--brand-teal); 
+            transform: translateY(-2px) scale(1.1); /* Nảy icon lên */
+        }
         .desktop-nav-text { display: none; }
 
         #app-section > .container-md { padding-left: 10px !important; padding-right: 10px !important; }
