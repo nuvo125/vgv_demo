@@ -27,19 +27,17 @@
     /* ================= FIX LỖI TRIỆT ĐỂ: KHÓA TRÀN MÀN HÌNH ================= */
     html, body {
         width: 100% !important;
-        max-width: 100% !important;
         overflow-x: hidden !important; 
-        
-        /* Bùa phép phá vỡ kìm kẹp của WordPress */
-        transform: none !important; 
-        perspective: none !important; 
-        
-        position: relative;
         background: radial-gradient(circle at top, #238b9d 0%, #105260 60%, #08303a 100%);
-        background-attachment: fixed;
         font-family: 'Inter', sans-serif; 
         color: var(--text-main);
     }
+
+    #login-section {
+        min-height: 100vh;
+        display: flex; justify-content: center; align-items: center; padding: 20px;
+    }
+
 
 
     /* ================= TÙY CHỈNH FONT ================= */
@@ -113,48 +111,79 @@
     }
 
     /* ================= UX DI ĐỘNG: MENU DÍNH TRÊN CÙNG ================= */
-    /* ================= UX DI ĐỘNG: MENU GHIM DƯỚI ĐÁY (APP-LIKE) ================= */
+    /* ================= UX DI ĐỘNG: NAVBAR GHIM CỨNG TRÊN CÙNG ================= */
     @media (max-width: 767.98px) {
-        #app-section { padding-top: 65px; } 
-        body.app-active { padding-bottom: 90px !important; } 
         
-        .responsive-nav {
+        /* 1. Ghim chặt thanh Header xanh lên đỉnh */
+        .top-header {
             position: fixed !important; 
-            top: auto !important; 
-            bottom: 0 !important; 
-            left: 0 !important; 
-            right: 0 !important; 
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
             width: 100% !important;
-            background: rgba(255, 255, 255, 0.98) !important; 
-            backdrop-filter: blur(10px);
-            z-index: 2147483647 !important; /* Mức cao nhất tuyệt đối của web */
-            box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15) !important; 
-            display: flex !important; justify-content: space-around !important; align-items: center !important;
-            padding: 0.6rem 0.25rem calc(0.8rem + env(safe-area-inset-bottom)) !important; 
-            margin: 0 !important; 
-            border-radius: 20px 20px 0 0 !important; 
-            
-            /* Sửa lỗi giật lag khi cuộn trên iPhone */
-            transform: translateZ(0) !important; 
-            will-change: transform, bottom;
+            height: 60px !important; /* Khóa cứng chiều cao */
+            z-index: 1050 !important;
         }
 
-        .responsive-nav .nav-item { flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; }
+        /* 2. Ghim chặt Navbar (Các Tab) ngay sát dưới Header */
+        .responsive-nav {
+            position: fixed !important; 
+            top: 60px !important; /* Bằng đúng chiều cao của Header */
+            left: 0 !important;
+            right: 0 !important;
+            width: 100% !important;
+            
+            background: rgba(255, 255, 255, 0.98) !important; 
+            backdrop-filter: blur(10px);
+            z-index: 1040 !important; 
+            box-shadow: 0 4px 15px rgba(13, 75, 86, 0.1) !important; 
+            
+            display: flex !important; 
+            justify-content: space-around !important; 
+            align-items: center !important;
+            padding: 0.6rem 0.5rem !important; 
+            margin: 0 !important; 
+            border-radius: 0 0 15px 15px !important; /* Bo góc dưới */
+        }
+
+        /* 3. BẮT BUỘC: Đẩy phần nội dung xuống để không bị 2 thanh trên đè mất */
+        #app-section {
+            padding-top: 140px !important; /* 60px (Header) + 80px (Navbar) = 140px */
+            padding-bottom: 30px !important;
+        }
+
+        /* Tinh chỉnh các nút trong Navbar */
+        .responsive-nav .nav-item { 
+            flex: 1 1 0px !important; 
+            min-width: 0 !important; 
+            display: flex; justify-content: center; 
+        }
+        
         .responsive-nav .nav-link {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 0.4rem 0.1rem; width: 95% !important; margin: 0 auto !important;
-            font-size: 0.65rem; line-height: 1.2; color: #8fa6aa; border-radius: 14px;
+            padding: 0.5rem 0.1rem; width: 95% !important; margin: 0 auto !important;
+            font-size: 0.65rem; line-height: 1.2; color: #8fa6aa; border-radius: 12px;
             transition: all 0.2s ease;
         }
-        .responsive-nav .nav-link i { font-size: 1.3rem; margin-bottom: 4px; }
+        
+        .responsive-nav .nav-link i { font-size: 1.25rem; margin-bottom: 4px; }
+        
+        /* Trạng thái Tab đang chọn */
         .responsive-nav .nav-link.active {
-            background-color: rgba(20, 106, 120, 0.1); color: var(--brand-teal); font-weight: 700;
+            background-color: var(--brand-teal); 
+            color: white; font-weight: 700;
+            box-shadow: 0 3px 8px rgba(20, 106, 120, 0.3);
         }
+        .responsive-nav .nav-link.active i { color: var(--brand-gold); }
         .desktop-nav-text { display: none; }
+
+        /* Tối ưu lề nội dung */
         #app-section > .container-md { padding-left: 10px !important; padding-right: 10px !important; }
         .list-hero-img { width: 95px !important; left: 0 !important; }
         .list-hero-info { margin-left: 95px !important; padding-right: 5px !important; }
-        #btn-back-to-top { bottom: 95px; right: 15px; }
+        
+        /* Nút cuộn lên đầu nằm gọn bên phải */
+        #btn-back-to-top { bottom: 30px; right: 15px; z-index: 1060; }
     }
 
     /* ================= UX MÁY TÍNH / TABLET ================= */
@@ -1247,32 +1276,6 @@
             }
         });
 
-// ================= FIX LỖI SAFARI/CHROME MOBILE CHE MENU =================
-        document.addEventListener("DOMContentLoaded", function() {
-            if (window.innerWidth <= 768) {
-                const mobileNav = document.getElementById('mainTab');
-                if (mobileNav) {
-                    // 1. Nhấc menu ra khỏi khung Elementor/Flatsome và dán thẳng vào Body
-                    document.body.appendChild(mobileNav);
-
-                    // 2. Dùng Visual Viewport API (Công nghệ xịn nhất hiện nay) để né thanh công cụ trình duyệt
-                    function updateNavPosition() {
-                        if (window.visualViewport) {
-                            // Tính toán chính xác phần màn hình bị thanh công cụ che mất
-                            const offset = window.innerHeight - window.visualViewport.height;
-                            // Đẩy menu lên cao bấy nhiêu pixel
-                            mobileNav.style.transform = `translateY(-${offset}px)`;
-                        }
-                    }
-
-                    if (window.visualViewport) {
-                        window.visualViewport.addEventListener('resize', updateNavPosition);
-                        window.visualViewport.addEventListener('scroll', updateNavPosition);
-                        updateNavPosition(); // Chạy lần đầu
-                    }
-                }
-            }
-        });
             </script>
 
 </body>
