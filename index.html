@@ -16,97 +16,297 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
     /* ================= BẢNG MÀU THƯƠNG HIỆU ================= */
-   /* ================= FIX LỖI CHIỀU CAO TRÌNH DUYỆT (100DVH) ================= */
-#login-section {
-    min-height: 100vh;
-    min-height: 100dvh; /* Tự động né thanh địa chỉ của Safari/Chrome */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
+    :root {
+        --brand-teal: #146a78;       
+        --brand-teal-dark: #0d4b56;  
+        --brand-gold: #f2c531;       
+        --brand-gold-hover: #d9ad23; 
+        --text-main: #2c3e50;
+    }
 
-/* ================= TÙY CHỈNH THANH HEADER CỐ ĐỊNH ================= */
-.top-header { 
-    border-bottom: 3px solid var(--brand-gold); 
-    background-color: var(--brand-teal-dark); 
-    width: 100%;
-    position: fixed !important; /* Cố định trên cùng */
-    top: 0 !important;
-    left: 0 !important;
-    z-index: 1050 !important;
-    padding-top: env(safe-area-inset-top); /* Né tai thỏ iPhone */
-}
+    /* ================= FIX LỖI TRIỆT ĐỂ: KHÓA TRÀN MÀN HÌNH ================= */
+    html, body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important; 
+        position: relative;
+        background: radial-gradient(circle at top, #238b9d 0%, #105260 60%, #08303a 100%);
+        background-attachment: fixed;
+        font-family: 'Inter', sans-serif; 
+        color: var(--text-main);
+    }
 
-/* Khoảng không để không bị Header đè lên nội dung */
-#app-section {
-    padding-top: 75px; 
-}
+    /* ================= TÙY CHỈNH FONT ================= */
+    .font-script {
+        font-family: 'Dancing Script', cursive;
+        color: var(--brand-gold);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .font-bold-title {
+        font-family: 'Be Vietnam Pro', sans-serif; 
+        font-weight: 900;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+    }
 
-/* ================= UX MỚI: MENU GẮN DƯỚI HEADER (Dành cho Mobile) ================= */
-@media (max-width: 767.98px) {
-    /* Hủy bỏ cái margin bottom của body cũ */
-    body.app-active { padding-bottom: 30px; }
+    /* ================= TIỆN ÍCH & NÚT BẤM ================= */
+    .text-teal { color: var(--brand-teal) !important; }
+    .text-gold { color: var(--brand-gold) !important; }
+    .bg-teal.bg-opacity-10 { background-color: rgba(20, 106, 120, 0.15) !important; }
+    .bg-gold { background-color: var(--brand-gold) !important; color: #000 !important; }
     
-    /* CHUYỂN MENU TỪ DƯỚI ĐÁY LÊN DÁN DÍNH TRÊN CÙNG */
-    .responsive-nav {
-        position: sticky !important; /* Dính khi cuộn */
-        top: 60px !important; /* Nằm ngay dưới thanh Top Header */
-        background: #ffffff; 
-        z-index: 1040;
-        box-shadow: 0 4px 15px rgba(13, 75, 86, 0.1);
-        display: flex; 
-        justify-content: space-around; 
-        align-items: center;
-        padding: 0.5rem 0.2rem; 
-        margin: 0 -10px 1.5rem -10px !important; /* Tràn ra 2 bên mép đt */
-        border-radius: 0 0 15px 15px; /* Bo tròn góc dưới */
-        border-bottom: 1px solid rgba(20, 106, 120, 0.1);
+    .btn-gold {
+        background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
+        color: #0d4b56;
+        font-weight: 800;
+        border: none;
+        box-shadow: 0 4px 15px rgba(242, 197, 49, 0.4);
+        transition: all 0.3s;
+    }
+    .btn-gold:hover {
+        background: linear-gradient(135deg, #f8b500 0%, #d9ad23 100%);
+        color: #000;
+        transform: translateY(-2px);
+    }
+    .glass-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 1.2rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
-    .responsive-nav .nav-item { 
-        flex: 1 1 0px !important; 
-        min-width: 0 !important;
-        display: flex; justify-content: center; 
+    /* ================= THANH HEADER CỐ ĐỊNH (FIX TRÌNH DUYỆT) ================= */
+    .top-header { 
+        border-bottom: 3px solid var(--brand-gold); 
+        background-color: var(--brand-teal-dark); 
+        width: 100% !important;
+        position: fixed !important; /* Ép dính trên cùng */
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1050 !important;
+        padding-top: env(safe-area-inset-top); /* Né tai thỏ iPhone */
     }
-    
-    /* Thiết kế lại nút bấm menu cho gọn khi nằm ở trên */
-    .responsive-nav .nav-link {
-        display: flex; flex-direction: column; align-items: center; justify-content: center;
-        padding: 0.4rem 0.1rem; 
-        width: 90% !important; 
-        margin: 0 auto !important;
-        font-size: 0.65rem; line-height: 1.2;
-        color: #8fa6aa; border-radius: 12px;
-        transition: all 0.2s ease;
+    .top-header .container-md {
+        display: flex; align-items: center; flex-wrap: nowrap !important;
     }
-    .responsive-nav .nav-link i { 
-        font-size: 1.2rem; margin-bottom: 4px; 
+    .top-header .navbar-brand {
+        flex: 1; min-width: 0; 
+        max-width: calc(100% - 90px); 
+        padding-right: 15px; margin-right: 0 !important;
     }
-    .responsive-nav .nav-link.active {
-        background-color: var(--brand-teal);
-        color: white; font-weight: 700;
-        box-shadow: 0 3px 8px rgba(20, 106, 120, 0.3);
+    .top-header #header-title,
+    .top-header .text-white-50 {
+        display: block; white-space: normal !important; word-wrap: break-word !important; line-height: 1.4;
     }
-    .responsive-nav .nav-link.active i {
-        color: var(--brand-gold); /* Nhấn nhá icon màu vàng khi active */
-    }
-    .desktop-nav-text { display: none; }
 
-    /* Nút cuộn lên đầu (Scroll to top) nằm gọn bên phải */
-    #btn-back-to-top {
-        bottom: 30px; 
-        right: 20px; 
+    /* Đẩy khung nội dung xuống để không bị Header đè */
+    #app-section {
+        padding-top: 60px; /* Sẽ được điều chỉnh ở phần media query */
     }
-}
 
+    /* ================= UX DI ĐỘNG: MENU DÍNH TRÊN CÙNG ================= */
+    /* ================= UX DI ĐỘNG: MENU GHIM DƯỚI ĐÁY (APP-LIKE) ================= */
+    @media (max-width: 767.98px) {
+        #app-section { padding-top: 65px; } /* Đẩy nội dung xuống né thanh Header trên cùng */
         
-    </style>
+        /* BẮT BUỘC: Đẩy phần đuôi trang web lên 90px để thẻ cuối cùng không bị Menu đè mất */
+        body.app-active { padding-bottom: 90px !important; } 
+        
+        /* THANH MENU DƯỚI ĐÁY */
+        .responsive-nav {
+            position: fixed !important; /* Ghim chết vào màn hình */
+            top: auto !important; /* Xóa lệnh ghim trên cùng */
+            bottom: 0 !important; /* Ép sát đáy */
+            left: 0 !important; 
+            right: 0 !important; 
+            width: 100% !important;
+            background: #ffffff; 
+            z-index: 1050; 
+            box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15); /* Bóng đổ ngược lên trên */
+            display: flex; justify-content: space-around; align-items: center;
+            
+            /* env(safe-area-inset-bottom): Bùa phép tự động đẩy Menu lên nếu máy là iPhone tai thỏ, né cái gạch vuốt Home */
+            padding: 0.6rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom)) !important; 
+            margin: 0 !important; 
+            border-radius: 20px 20px 0 0; /* Bo tròn 2 góc trên */
+        }
+
+        .responsive-nav .nav-item { 
+            flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; 
+        }
+        
+        .responsive-nav .nav-link {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 0.4rem 0.1rem; width: 95% !important; margin: 0 auto !important;
+            font-size: 0.65rem; line-height: 1.2; color: #8fa6aa; border-radius: 14px;
+            transition: all 0.2s ease;
+        }
+        
+        .responsive-nav .nav-link i { font-size: 1.3rem; margin-bottom: 4px; }
+        
+        .responsive-nav .nav-link.active {
+            background-color: rgba(20, 106, 120, 0.1); /* Màu nền nhẹ khi chọn */
+            color: var(--brand-teal); font-weight: 700;
+            box-shadow: none;
+        }
+        .desktop-nav-text { display: none; }
+
+        /* Tối ưu lề 2 bên điện thoại */
+        #app-section > .container-md { padding-left: 10px !important; padding-right: 10px !important; }
+        .list-hero-img { width: 95px !important; left: 0 !important; }
+        .list-hero-info { margin-left: 95px !important; padding-right: 5px !important; }
+        
+        /* Đẩy nút cuộn lên đầu cao lên để không bị thanh Menu đè */
+        #btn-back-to-top { bottom: 95px; right: 15px; }
+    }
+
+    /* ================= UX MÁY TÍNH / TABLET ================= */
+    @media (min-width: 768px) {
+        #app-section { padding-top: 75px; }
+        .responsive-nav {
+            position: sticky; top: 85px; z-index: 1040;
+            background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+            border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            display: flex; padding: 0.5rem; margin-bottom: 1.5rem; gap: 0.5rem;
+        }
+        .responsive-nav .nav-link {
+            display: flex; align-items: center; justify-content: center; gap: 8px; 
+            padding: 0.6rem 1.2rem; color: #6c757d;
+            border-radius: 8px; font-weight: 600; transition: all 0.3s;
+        }
+        .responsive-nav .nav-link i { font-size: 1.1rem; width: 20px; text-align: center; }
+        .responsive-nav .nav-link.active {
+            background-color: var(--brand-teal); color: #ffffff;
+            box-shadow: 0 4px 10px rgba(20, 106, 120, 0.3);
+        }
+        .mobile-nav-text { display: none; }
+        #btn-back-to-top { bottom: 40px; right: 40px; }
+    }
+
+    /* ================= TIMELINE & ANIMATION ================= */
+    .timeline { border-left: 2px solid var(--brand-teal); padding-left: 1.5rem; margin-left: 10px; position: relative; }
+    .timeline-item { position: relative; margin-bottom: 1.5rem; }
+    .timeline-item::before {
+        content: ''; position: absolute; left: -1.9rem; top: 4px;
+        width: 14px; height: 14px; background: var(--brand-gold);
+        border: 3px solid #fff; border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(20, 106, 120, 0.2);
+    }
+    .timeline-item.past::before { background: #cbd5e1; border-color: #fff; box-shadow: none; }
+    .tab-pane.fade.show { animation: fadeIn 0.4s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .tb-list-item { cursor: pointer; transition: background-color 0.2s; }
+    .tb-list-item:hover, .tb-list-item:active { background-color: rgba(20, 106, 120, 0.05) !important; }
+
+    /* ================= THẺ CÁ NHÂN ================= */
+    .profile-hero-card {
+        margin-top: 60px; min-height: 140px; 
+        border-bottom: 4px solid var(--brand-gold);
+        background: linear-gradient(135deg, rgba(220, 240, 243, 0.95) 0%, rgba(255,255,255,0.95) 100%);
+        border-radius: 45px 15px 15px 15px; position: relative;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .profile-hero-img {
+        position: absolute; bottom: 0 !important; left: 5px; 
+        width: 130px; height: 135%; max-height: 180px; 
+        object-fit: contain; object-position: left bottom !important; 
+        z-index: 2; filter: drop-shadow(3px 3px 6px rgba(13, 75, 86, 0.15));
+    }
+    .profile-hero-info {
+        margin-left: 135px; padding: 1.5rem 1rem 1.5rem 0; 
+        position: relative; z-index: 3; width: auto;
+    }
+    @media (max-width: 380px) {
+        .profile-hero-img { width: 110px; left: 0px; }
+        .profile-hero-info { margin-left: 115px; padding-top: 1.2rem; }
+        .profile-hero-info h4 { font-size: 1.1rem !important; }
+    }
+
+    /* ================= DANH BẠ ĐOÀN 3D ================= */
+    .group-header {
+        position: relative; top: 0 !important; 
+        background: linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-teal-dark) 100%);
+        color: white; padding: 8px 15px; font-size: 0.8rem; font-weight: 800;
+        text-transform: uppercase; letter-spacing: 1px;
+        z-index: 10; margin-top: 30px; margin-bottom: 55px; 
+        border-radius: 8px; box-shadow: 0 4px 10px rgba(13, 75, 86, 0.2);
+        border-left: 4px solid var(--brand-gold); display: flex; align-items: center;
+    }
+    .list-hero-card {
+        margin-top: 0; margin-bottom: 55px; min-height: 95px; 
+        border-bottom: 4px solid var(--brand-gold);
+        background: linear-gradient(135deg, rgba(220, 240, 243, 0.8) 0%, rgba(255,255,255,0.95) 100%);
+        border-radius: 35px 15px 15px 15px; position: relative;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.04); display: flex; align-items: center;
+        max-width: 100% !important; overflow: visible !important;
+    }
+    .list-hero-img {
+        position: absolute; bottom: 0 !important; left: 5px; 
+        width: 100px; height: 140%; max-height: 140px; 
+        object-fit: contain; object-position: left bottom !important; 
+        z-index: 2; filter: drop-shadow(3px 3px 6px rgba(13, 75, 86, 0.15));
+    }
+    .list-hero-info {
+        margin-left: 110px; padding: 15px 10px 15px 0; width: 100%; z-index: 3; position: relative;
+        min-width: 0 !important; flex: 1 1 0% !important;
+    }
+    .list-hero-info .search-name { white-space: normal !important; word-wrap: break-word !important; line-height: 1.3; }
+    .list-hero-info .text-muted.small { white-space: normal !important; word-wrap: break-word !important; display: block !important; }
+
+    /* ================= NÚT SCROLL TO TOP ================= */
+    #btn-back-to-top {
+        position: fixed; display: none; 
+        width: 45px; height: 45px; border-radius: 50%;
+        background-color: var(--brand-teal); color: white;
+        border: 2px solid rgba(255,255,255,0.5); box-shadow: 0 4px 12px rgba(13, 75, 86, 0.4);
+        z-index: 1060; align-items: center; justify-content: center;
+        cursor: pointer; transition: all 0.3s;
+    }
+    #btn-back-to-top:hover { background-color: var(--brand-gold); color: var(--brand-teal-dark); transform: translateY(-3px); }
+
+    /* ================= TYPOGRAPHY & FIX WORDPRESS ================= */
+    .name-vn { font-family: 'Be Vietnam Pro', sans-serif !important; line-height: 1.4 !important; padding-top: 3px; }
+    #header-title { font-size: 1.15rem !important; }
+    .top-header .text-white-50 { font-size: 0.8rem !important; }
+    .badge { font-size: 0.75rem !important; padding: 0.35em 0.6em !important; }
+    
+    .entry-content, .site-main, .container, .page-content, .ast-container {
+        padding: 0 !important; max-width: 100% !important; margin: 0 !important; width: 100% !important;
+    }
+    body { margin: 0 !important; padding: 0 !important; }
+
+    /* ================= FIX CHIỀU CAO MÀN HÌNH ĐĂNG NHẬP (100DVH) ================= */
+    #login-section {
+        min-height: 100vh;
+        min-height: 100dvh; /* Bùa phép tự động né thanh công cụ trình duyệt */
+        width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    #app-section {
+        width: 100vw !important;
+        position: relative;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+    }
+</style>
 </head>
 <body>
 
     <!-- ================= MÀN HÌNH ĐĂNG NHẬP ================= -->
-    <div id="login-section" class="container vh-100 d-flex justify-content-center align-items-center">
+<div id="login-section" class="container">
         <div class="glass-card w-100 p-4 p-md-5" style="max-width: 420px;">
             
             <!-- Logo & Title Thematic -->
