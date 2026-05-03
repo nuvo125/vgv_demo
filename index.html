@@ -29,12 +29,18 @@
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important; 
+        
+        /* Bùa phép phá vỡ kìm kẹp của WordPress */
+        transform: none !important; 
+        perspective: none !important; 
+        
         position: relative;
         background: radial-gradient(circle at top, #238b9d 0%, #105260 60%, #08303a 100%);
         background-attachment: fixed;
         font-family: 'Inter', sans-serif; 
         color: var(--text-main);
     }
+
 
     /* ================= TÙY CHỈNH FONT ================= */
     .font-script {
@@ -109,13 +115,9 @@
     /* ================= UX DI ĐỘNG: MENU DÍNH TRÊN CÙNG ================= */
     /* ================= UX DI ĐỘNG: MENU GHIM DƯỚI ĐÁY (APP-LIKE) ================= */
     @media (max-width: 767.98px) {
-        #app-section { padding-top: 65px; } /* Đẩy nội dung xuống né thanh Header trên cùng */
-        
-        /* BẮT BUỘC: Đẩy phần đuôi trang web lên 90px để thẻ cuối cùng không bị Menu đè mất */
+        #app-section { padding-top: 65px; } 
         body.app-active { padding-bottom: 90px !important; } 
         
-        /* THANH MENU DƯỚI ĐÁY */
-        /* THANH MENU DƯỚI ĐÁY (ĐÃ FIX LỖI WORDPRESS) */
         .responsive-nav {
             position: fixed !important; 
             top: auto !important; 
@@ -123,46 +125,35 @@
             left: 0 !important; 
             right: 0 !important; 
             width: 100% !important;
-            background: rgba(255, 255, 255, 0.95) !important; 
+            background: rgba(255, 255, 255, 0.98) !important; 
             backdrop-filter: blur(10px);
-            z-index: 9999999 !important; /* Đẩy lên lớp cao nhất vũ trụ để không thằng nào đè được */
+            z-index: 2147483647 !important; /* Mức cao nhất tuyệt đối của web */
             box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15) !important; 
-            display: flex !important; 
-            justify-content: space-around !important; 
-            align-items: center !important;
-            
-            /* Tự động tính toán đẩy Menu lên né thanh gạch ngang của iPhone */
+            display: flex !important; justify-content: space-around !important; align-items: center !important;
             padding: 0.6rem 0.25rem calc(0.8rem + env(safe-area-inset-bottom)) !important; 
             margin: 0 !important; 
             border-radius: 20px 20px 0 0 !important; 
+            
+            /* Sửa lỗi giật lag khi cuộn trên iPhone */
+            transform: translateZ(0) !important; 
+            will-change: transform, bottom;
         }
 
-        .responsive-nav .nav-item { 
-            flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; 
-        }
-        
+        .responsive-nav .nav-item { flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; }
         .responsive-nav .nav-link {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 0.4rem 0.1rem; width: 95% !important; margin: 0 auto !important;
             font-size: 0.65rem; line-height: 1.2; color: #8fa6aa; border-radius: 14px;
             transition: all 0.2s ease;
         }
-        
         .responsive-nav .nav-link i { font-size: 1.3rem; margin-bottom: 4px; }
-        
         .responsive-nav .nav-link.active {
-            background-color: rgba(20, 106, 120, 0.1); /* Màu nền nhẹ khi chọn */
-            color: var(--brand-teal); font-weight: 700;
-            box-shadow: none;
+            background-color: rgba(20, 106, 120, 0.1); color: var(--brand-teal); font-weight: 700;
         }
         .desktop-nav-text { display: none; }
-
-        /* Tối ưu lề 2 bên điện thoại */
         #app-section > .container-md { padding-left: 10px !important; padding-right: 10px !important; }
         .list-hero-img { width: 95px !important; left: 0 !important; }
         .list-hero-info { margin-left: 95px !important; padding-right: 5px !important; }
-        
-        /* Đẩy nút cuộn lên đầu cao lên để không bị thanh Menu đè */
         #btn-back-to-top { bottom: 95px; right: 15px; }
     }
 
@@ -1256,21 +1247,33 @@
             }
         });
 
-        // ================= VŨ KHÍ TỐI THƯỢNG: TRỊ LỖI MENU BỊ TRÔI XUỐNG ĐÁY WORDPRESS =================
+// ================= FIX LỖI SAFARI/CHROME MOBILE CHE MENU =================
         document.addEventListener("DOMContentLoaded", function() {
-            // Kiểm tra xem có phải màn hình điện thoại không
             if (window.innerWidth <= 768) {
-                setTimeout(function() {
-                    const mobileNav = document.getElementById('mainTab');
-                    if (mobileNav) {
-                        // "Bắt cóc" thanh Menu ra khỏi khung WordPress và dán thẳng vào Body
-                        document.body.appendChild(mobileNav);
-                        console.log("✅ Đã kéo thanh Menu ra ngoài thành công!");
+                const mobileNav = document.getElementById('mainTab');
+                if (mobileNav) {
+                    // 1. Nhấc menu ra khỏi khung Elementor/Flatsome và dán thẳng vào Body
+                    document.body.appendChild(mobileNav);
+
+                    // 2. Dùng Visual Viewport API (Công nghệ xịn nhất hiện nay) để né thanh công cụ trình duyệt
+                    function updateNavPosition() {
+                        if (window.visualViewport) {
+                            // Tính toán chính xác phần màn hình bị thanh công cụ che mất
+                            const offset = window.innerHeight - window.visualViewport.height;
+                            // Đẩy menu lên cao bấy nhiêu pixel
+                            mobileNav.style.transform = `translateY(-${offset}px)`;
+                        }
                     }
-                }, 500); // Đợi 0.5s cho WordPress load xong cấu trúc rồi mới hành động
+
+                    if (window.visualViewport) {
+                        window.visualViewport.addEventListener('resize', updateNavPosition);
+                        window.visualViewport.addEventListener('scroll', updateNavPosition);
+                        updateNavPosition(); // Chạy lần đầu
+                    }
+                }
             }
         });
-    </script>
+            </script>
 
 </body>
 </html>
