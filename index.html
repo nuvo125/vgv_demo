@@ -1213,12 +1213,56 @@
             }
         }
 
+        // ================= XỬ LÝ NÚT SCROLL TO TOP (HỖ TRỢ TỐT CHO IFRAME WORDPRESS) =================
         const backToTopBtn = document.getElementById("btn-back-to-top");
-        window.addEventListener("scroll", () => {
-            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) { backToTopBtn.style.display = "flex"; } 
-            else { backToTopBtn.style.display = "none"; }
-        });
-        function scrollToTop() { window.scrollTo({ top: 0, behavior: "smooth" }); }
+
+        function checkScrollPosition() {
+            let scrollPos = 0;
+
+            // 1. Lấy vị trí cuộn của Iframe (Dùng window.scrollY chuẩn nhất)
+            let internalScroll = window.scrollY || document.documentElement.scrollTop;
+
+            // 2. Cố gắng lấy vị trí cuộn của trang WordPress mẹ (nếu bị iframe đánh lừa)
+            let parentScroll = 0;
+            try {
+                if (window.parent && window.parent !== window) {
+                    parentScroll = window.parent.scrollY || window.parent.document.documentElement.scrollTop;
+                }
+            } catch (e) {} // Bỏ qua lỗi bảo mật CORS nếu test trên Localhost khác port
+
+            // Lấy giá trị cuộn thực tế cao nhất
+            scrollPos = Math.max(internalScroll, parentScroll);
+
+            // Hiện nút nếu cuộn quá 300px
+            if (scrollPos > 300) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        }
+
+        // Lắng nghe sự kiện cuộn trên Iframe
+        window.addEventListener("scroll", checkScrollPosition);
+
+        // Lắng nghe sự kiện cuộn trên trang WordPress mẹ
+        try {
+            if (window.parent && window.parent !== window) {
+                window.parent.addEventListener("scroll", checkScrollPosition);
+            }
+        } catch (e) {}
+
+        // Hàm thực thi khi bấm nút
+        function scrollToTop() {
+            // Cuộn iframe lên đầu
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            
+            // Ép trang WordPress mẹ cuộn lên đầu cùng lúc
+            try {
+                if (window.parent && window.parent !== window) {
+                    window.parent.scrollTo({ top: 0, behavior: "smooth" });
+                }
+            } catch (e) {}
+        }
 
         // ================= TỰ ĐỘNG CUỘN ACCORDION (PHIÊN BẢN DEBUG + SCROLL INTO VIEW) =================
         document.addEventListener('shown.bs.collapse', function (e) {
