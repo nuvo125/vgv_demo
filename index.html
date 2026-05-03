@@ -115,22 +115,26 @@
         body.app-active { padding-bottom: 90px !important; } 
         
         /* THANH MENU DƯỚI ĐÁY */
+        /* THANH MENU DƯỚI ĐÁY (ĐÃ FIX LỖI WORDPRESS) */
         .responsive-nav {
-            position: fixed !important; /* Ghim chết vào màn hình */
-            top: auto !important; /* Xóa lệnh ghim trên cùng */
-            bottom: 0 !important; /* Ép sát đáy */
+            position: fixed !important; 
+            top: auto !important; 
+            bottom: 0 !important; 
             left: 0 !important; 
             right: 0 !important; 
             width: 100% !important;
-            background: #ffffff; 
-            z-index: 1050; 
-            box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15); /* Bóng đổ ngược lên trên */
-            display: flex; justify-content: space-around; align-items: center;
+            background: rgba(255, 255, 255, 0.95) !important; 
+            backdrop-filter: blur(10px);
+            z-index: 9999999 !important; /* Đẩy lên lớp cao nhất vũ trụ để không thằng nào đè được */
+            box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15) !important; 
+            display: flex !important; 
+            justify-content: space-around !important; 
+            align-items: center !important;
             
-            /* env(safe-area-inset-bottom): Bùa phép tự động đẩy Menu lên nếu máy là iPhone tai thỏ, né cái gạch vuốt Home */
-            padding: 0.6rem 0.25rem calc(0.5rem + env(safe-area-inset-bottom)) !important; 
+            /* Tự động tính toán đẩy Menu lên né thanh gạch ngang của iPhone */
+            padding: 0.6rem 0.25rem calc(0.8rem + env(safe-area-inset-bottom)) !important; 
             margin: 0 !important; 
-            border-radius: 20px 20px 0 0; /* Bo tròn 2 góc trên */
+            border-radius: 20px 20px 0 0 !important; 
         }
 
         .responsive-nav .nav-item { 
@@ -1249,6 +1253,21 @@
                 } else {
                     console.error("🚨 Không tìm thấy thẻ Header của Accordion!");
                 }
+            }
+        });
+
+        // ================= VŨ KHÍ TỐI THƯỢNG: TRỊ LỖI MENU BỊ TRÔI XUỐNG ĐÁY WORDPRESS =================
+        document.addEventListener("DOMContentLoaded", function() {
+            // Kiểm tra xem có phải màn hình điện thoại không
+            if (window.innerWidth <= 768) {
+                setTimeout(function() {
+                    const mobileNav = document.getElementById('mainTab');
+                    if (mobileNav) {
+                        // "Bắt cóc" thanh Menu ra khỏi khung WordPress và dán thẳng vào Body
+                        document.body.appendChild(mobileNav);
+                        console.log("✅ Đã kéo thanh Menu ra ngoài thành công!");
+                    }
+                }, 500); // Đợi 0.5s cho WordPress load xong cấu trúc rồi mới hành động
             }
         });
     </script>
