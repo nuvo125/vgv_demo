@@ -949,29 +949,47 @@
 
         // ================= 4. API DANH BẠ ĐOÀN =================
         let globalGroupData = [];
+        let isGroupRendered = false; // THÊM BIẾN NÀY ĐỂ ĐÁNH DẤU ĐÃ VẼ HAY CHƯA
+
         async function fetchGroupData() {
             const loadingUI = document.getElementById('group-loading');
             const countBadge = document.getElementById('group-total-count');
             const cacheKey = `vgv_group_v3`; 
             const cachedString = safeGetStorage(cacheKey);
 
+            // BƯỚC 1: XỬ LÝ CACHE
             if (cachedString) {
                 globalGroupData = JSON.parse(cachedString).data;
                 countBadge.innerText = `${globalGroupData.length} người`;
-                renderGroupList(globalGroupData);
+                
+                // CHỈ VẼ RA NẾU CHƯA TỪNG VẼ (chống load lại ảnh khi bấm chuyển tab)
+                if (!isGroupRendered) {
+                    renderGroupList(globalGroupData);
+                    isGroupRendered = true;
+                }
                 loadingUI.classList.add('d-none');
             } else {
                 loadingUI.classList.remove('d-none');
             }
 
+            // BƯỚC 2: GỌI API ĐỂ CẬP NHẬT NGẦM
             try {
                 const response = await fetch(`https://nhaconguoidoicom.com/webhook/total`);
                 if (response.ok) {
                     const freshData = await response.json();
-                    globalGroupData = freshData;
-                    safeSetStorage(cacheKey, JSON.stringify({ data: freshData }));
-                    countBadge.innerText = `${globalGroupData.length} người`;
-                    renderGroupList(freshData);
+                    const newCacheString = JSON.stringify({ data: freshData });
+                    
+                    // BƯỚC 3: SO SÁNH DỮ LIỆU. CHỈ VẼ LẠI KHI CÓ SỰ THAY ĐỔI TỪ SERVER
+                    if (cachedString !== newCacheString) {
+                        console.log("Phát hiện dữ liệu đoàn thay đổi. Đang cập nhật giao diện...");
+                        globalGroupData = freshData;
+                        safeSetStorage(cacheKey, newCacheString);
+                        countBadge.innerText = `${globalGroupData.length} người`;
+                        
+                        renderGroupList(freshData); // Trường hợp này bắt buộc phải vẽ lại
+                        isGroupRendered = true;
+                    }
+                    
                     loadingUI.classList.add('d-none');
                 }
             } catch (error) {
@@ -1108,7 +1126,7 @@
                 },
                 "🎯 Team 3": { 
                     tenTeam: "LÊN ĐỈNH", 
-                    slogan: "Đã lên và phải tới đỉnh" 
+                    slogan: "Đã lên là phải tới đỉnh" 
                 },
                 "🎯 Team 4": { 
                     tenTeam: "HOÀNG KIM", 
