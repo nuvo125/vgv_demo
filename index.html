@@ -25,10 +25,18 @@
     }
 
     /* ================= FIX LỖI TRIỆT ĐỂ: KHÓA TRÀN MÀN HÌNH ================= */
+    /* ================= FIX LỖI TRIỆT ĐỂ: KHÓA TRÀN MÀN HÌNH ================= */
     html, body {
         width: 100% !important;
-        overflow-x: hidden !important; 
+        max-width: 100% !important;
+        
+        /* Thay hidden bằng clip: Vừa chống lắc ngang, vừa cứu sống lệnh Sticky */
+        overflow-x: clip !important; 
+        -webkit-overflow-scrolling: touch !important; /* Ép Safari vuốt mượt như lụa */
+        
+        position: relative;
         background: radial-gradient(circle at top, #238b9d 0%, #105260 60%, #08303a 100%);
+        background-attachment: fixed;
         font-family: 'Inter', sans-serif; 
         color: var(--text-main);
     }
@@ -113,53 +121,58 @@
 
     /* ================= UX DI ĐỘNG: MENU DÍNH TRÊN CÙNG ================= */
     /* ================= UX DI ĐỘNG: HEADER TRÔI, NAVBAR STICKY (BẰNG JS) ================= */
+    /* ================= UX DI ĐỘNG: CSS THUẦN, VUỐT MƯỢT, NAVBAR GỌN GÀNG ================= */
     @media (max-width: 767.98px) {
         
-        .top-header { position: relative !important; z-index: 1050 !important; width: 100% !important; }
-        #app-section { padding-top: 0 !important; padding-bottom: 30px !important; }
+        .top-header { 
+            position: relative !important; 
+            z-index: 1050 !important; 
+            width: 100% !important; 
+        }
+        
+        #app-section { 
+            padding-top: 0 !important; 
+            padding-bottom: 30px !important; 
+        }
 
-        /* Trạng thái 1: Khi Navbar nằm bình thường dưới Header */
+        /* NAVBAR STICKY: Mỏng hơn, gọn hơn */
         .responsive-nav {
-            position: relative !important; /* Nằm im tự nhiên */
+            position: sticky !important; 
+            top: -1px !important; /* Trừ hao 1px để không bị hở khe sáng khi cuộn */
+            
             background: rgba(255, 255, 255, 0.98) !important; 
             backdrop-filter: blur(10px);
             z-index: 1060 !important; 
-            box-shadow: 0 4px 15px rgba(13, 75, 86, 0.1) !important; 
+            box-shadow: 0 4px 15px rgba(13, 75, 86, 0.08) !important; 
+            
             display: flex !important; justify-content: space-around !important; align-items: center !important;
-            padding: 0.6rem 0.5rem !important; 
-            margin: 0 -10px 1.5rem -10px !important; 
-            border-radius: 0 0 15px 15px !important; 
-            transition: all 0.2s ease;
-        }
-
-        /* Trạng thái 2: Khi cuộn qua Header, JS sẽ gắn class này vào để Navbar dính chặt trên nóc */
-        .responsive-nav.nav-is-fixed {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            margin: 0 !important; /* Xóa lề tràn 2 bên để khớp với màn hình */
-            border-radius: 0 0 15px 15px !important;
-            box-shadow: 0 6px 20px rgba(13, 75, 86, 0.15) !important;
-            animation: navSlideDown 0.3s ease-out; /* Hiệu ứng trượt nhẹ xuống */
-        }
-
-        @keyframes navSlideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
+            
+            /* Ép nhỏ chiều cao Navbar lại */
+            padding: 0.3rem 0.2rem !important; 
+            margin: 0 -10px 1.2rem -10px !important; 
+            border-radius: 0 0 12px 12px !important; 
         }
 
         .responsive-nav .nav-item { flex: 1 1 0px !important; min-width: 0 !important; display: flex; justify-content: center; }
+        
+        /* Bóp nhỏ các nút bấm bên trong */
         .responsive-nav .nav-link {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 0.5rem 0.1rem; width: 95% !important; margin: 0 auto !important;
-            font-size: 0.65rem; line-height: 1.2; color: #8fa6aa; border-radius: 12px;
+            padding: 0.3rem 0.1rem; width: 95% !important; margin: 0 auto !important;
+            font-size: 0.6rem !important; /* Chữ nhỏ lại một chút xíu */
+            line-height: 1.2; color: #8fa6aa; border-radius: 10px;
             transition: all 0.2s ease;
         }
-        .responsive-nav .nav-link i { font-size: 1.25rem; margin-bottom: 4px; }
+        
+        /* Thu nhỏ Icon */
+        .responsive-nav .nav-link i { 
+            font-size: 1.15rem !important; 
+            margin-bottom: 3px !important; 
+        }
+        
         .responsive-nav .nav-link.active {
             background-color: var(--brand-teal); color: white; font-weight: 700;
-            box-shadow: 0 3px 8px rgba(20, 106, 120, 0.3);
+            box-shadow: 0 3px 8px rgba(20, 106, 120, 0.2);
         }
         .responsive-nav .nav-link.active i { color: var(--brand-gold); }
         .desktop-nav-text { display: none; }
@@ -1303,30 +1316,7 @@
                 }
             }
         });
-// ================= ĐỘNG CƠ XỬ LÝ NAVBAR STICKY TRÊN MOBILE =================
-        window.addEventListener('scroll', function() {
-            // Chỉ chạy trên màn hình điện thoại (dưới 768px)
-            if (window.innerWidth <= 768) {
-                const header = document.querySelector('.top-header');
-                const nav = document.querySelector('.responsive-nav');
-                const contentContainer = document.getElementById('mainTabContent');
 
-                if (header && nav && contentContainer) {
-                    const headerHeight = header.offsetHeight;
-
-                    // Nếu cuộn qua khỏi chiều cao của Header màu xanh
-                    if (window.scrollY >= headerHeight) {
-                        nav.classList.add('nav-is-fixed'); // Đóng đinh Navbar lên đỉnh
-                        // Bù lại khoảng trống mà Navbar để lại để nội dung không bị giật nảy lên
-                        contentContainer.style.paddingTop = nav.offsetHeight + 15 + 'px'; 
-                    } else {
-                        // Khi cuộn ngược lên lại trên cùng
-                        nav.classList.remove('nav-is-fixed'); // Trả Navbar về bình thường
-                        contentContainer.style.paddingTop = '0px'; 
-                    }
-                }
-            }
-        });
             </script>
 
 </body>
