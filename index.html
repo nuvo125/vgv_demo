@@ -16,324 +16,89 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&family=Dancing+Script:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
     /* ================= BẢNG MÀU THƯƠNG HIỆU ================= */
-        :root {
-            --brand-teal: #146a78;       
-            --brand-teal-dark: #0d4b56;  
-            --brand-gold: #f2c531;       
-            --brand-gold-hover: #d9ad23; 
-            --text-main: #2c3e50;
-        }
+   /* ================= FIX LỖI CHIỀU CAO TRÌNH DUYỆT (100DVH) ================= */
+#login-section {
+    min-height: 100vh;
+    min-height: 100dvh; /* Tự động né thanh địa chỉ của Safari/Chrome */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
-        /* ================= FIX LỖI TRIỆT ĐỂ: KHÓA TRÀN MÀN HÌNH ================= */
-        html, body {
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow-x: hidden !important; /* Dập tắt lỗi lắc lư chiều ngang */
-            position: relative;
-            background: radial-gradient(circle at top, #238b9d 0%, #105260 60%, #08303a 100%);
-            background-attachment: fixed;
-            font-family: 'Inter', sans-serif; 
-            color: var(--text-main);
-        }
+/* ================= TÙY CHỈNH THANH HEADER CỐ ĐỊNH ================= */
+.top-header { 
+    border-bottom: 3px solid var(--brand-gold); 
+    background-color: var(--brand-teal-dark); 
+    width: 100%;
+    position: fixed !important; /* Cố định trên cùng */
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1050 !important;
+    padding-top: env(safe-area-inset-top); /* Né tai thỏ iPhone */
+}
 
-        /* ================= TÙY CHỈNH FONT ================= */
-        .font-script {
-            font-family: 'Dancing Script', cursive;
-            color: var(--brand-gold);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        .font-bold-title {
-            font-family: 'Be Vietnam Pro', sans-serif; 
-            font-weight: 900;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
+/* Khoảng không để không bị Header đè lên nội dung */
+#app-section {
+    padding-top: 75px; 
+}
 
-        /* ================= TIỆN ÍCH ================= */
-        .text-teal { color: var(--brand-teal) !important; }
-        .text-gold { color: var(--brand-gold) !important; }
-        .bg-teal.bg-opacity-10 { background-color: rgba(20, 106, 120, 0.15) !important; }
-        .bg-gold { background-color: var(--brand-gold) !important; color: #000 !important; }
-        
-        .btn-gold {
-            background: linear-gradient(135deg, #fceabb 0%, #f8b500 100%);
-            color: #0d4b56;
-            font-weight: 800;
-            border: none;
-            box-shadow: 0 4px 15px rgba(242, 197, 49, 0.4);
-            transition: all 0.3s;
-        }
-        .btn-gold:hover {
-            background: linear-gradient(135deg, #f8b500 0%, #d9ad23 100%);
-            color: #000;
-            transform: translateY(-2px);
-        }
+/* ================= UX MỚI: MENU GẮN DƯỚI HEADER (Dành cho Mobile) ================= */
+@media (max-width: 767.98px) {
+    /* Hủy bỏ cái margin bottom của body cũ */
+    body.app-active { padding-bottom: 30px; }
+    
+    /* CHUYỂN MENU TỪ DƯỚI ĐÁY LÊN DÁN DÍNH TRÊN CÙNG */
+    .responsive-nav {
+        position: sticky !important; /* Dính khi cuộn */
+        top: 60px !important; /* Nằm ngay dưới thanh Top Header */
+        background: #ffffff; 
+        z-index: 1040;
+        box-shadow: 0 4px 15px rgba(13, 75, 86, 0.1);
+        display: flex; 
+        justify-content: space-around; 
+        align-items: center;
+        padding: 0.5rem 0.2rem; 
+        margin: 0 -10px 1.5rem -10px !important; /* Tràn ra 2 bên mép đt */
+        border-radius: 0 0 15px 15px; /* Bo tròn góc dưới */
+        border-bottom: 1px solid rgba(20, 106, 120, 0.1);
+    }
 
-        .glass-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 1.2rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
+    .responsive-nav .nav-item { 
+        flex: 1 1 0px !important; 
+        min-width: 0 !important;
+        display: flex; justify-content: center; 
+    }
+    
+    /* Thiết kế lại nút bấm menu cho gọn khi nằm ở trên */
+    .responsive-nav .nav-link {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 0.4rem 0.1rem; 
+        width: 90% !important; 
+        margin: 0 auto !important;
+        font-size: 0.65rem; line-height: 1.2;
+        color: #8fa6aa; border-radius: 12px;
+        transition: all 0.2s ease;
+    }
+    .responsive-nav .nav-link i { 
+        font-size: 1.2rem; margin-bottom: 4px; 
+    }
+    .responsive-nav .nav-link.active {
+        background-color: var(--brand-teal);
+        color: white; font-weight: 700;
+        box-shadow: 0 3px 8px rgba(20, 106, 120, 0.3);
+    }
+    .responsive-nav .nav-link.active i {
+        color: var(--brand-gold); /* Nhấn nhá icon màu vàng khi active */
+    }
+    .desktop-nav-text { display: none; }
 
-        /* ================= TÙY CHỈNH THANH HEADER & CHỮ DÀI RỚT DÒNG ================= */
-        .top-header { 
-            border-bottom: 3px solid var(--brand-gold); 
-            background-color: var(--brand-teal-dark); 
-            width: 100% !important;
-            left: 0 !important;
-            right: 0 !important;
-            z-index: 1050 !important;
-        }
-        .top-header .container-md {
-            display: flex;
-            align-items: center; /* Giữ nút thoát luôn ở giữa theo chiều dọc nếu chữ bị rớt 2-3 dòng */
-            flex-wrap: nowrap !important;
-        }
-        .top-header .navbar-brand {
-            flex: 1; /* Chiếm hết khoảng trống bên trái */
-            min-width: 0; /* Ép text bên trong tự xuống dòng khi chạm giới hạn */
-            max-width: calc(100% - 90px); /* Chừa đúng 90px an toàn cho nút Thoát */
-            padding-right: 15px; /* Giãn cách tránh chữ dính vào nút */
-            margin-right: 0 !important;
-        }
-        .top-header #header-title,
-        .top-header .text-white-50 {
-            display: block;
-            white-space: normal !important; /* Cho phép chữ bẻ dòng */
-            word-wrap: break-word !important; 
-            line-height: 1.4;
-        }
-
-        /* ================= THANH MENU RESPONSIVE ================= */
-        @media (max-width: 767.98px) {
-            body.app-active { padding-bottom: 80px; }
-            
-            /* ÉP KHUNG: Khóa ngàm 2 đầu sát rạt viền điện thoại */
-            .responsive-nav {
-                position: fixed !important;
-                bottom: 0 !important; left: 0 !important; right: 0 !important;
-                width: 100% !important; max-width: 100% !important;
-                background: #ffffff; z-index: 1050;
-                box-shadow: 0 -5px 20px rgba(13, 75, 86, 0.15);
-                display: flex; justify-content: space-around; align-items: center;
-                padding: 0.6rem 0.25rem 0.5rem; margin: 0 !important;
-                border-radius: 20px 20px 0 0;
-                box-sizing: border-box !important;
-            }
-            .responsive-nav .nav-item { 
-                flex: 1 1 0px !important; /* Dàn đều tuyệt đối 4 ô */
-                min-width: 0 !important;
-                display: flex; justify-content: center; 
-            }
-            .responsive-nav .nav-link {
-                display: flex; flex-direction: column; align-items: center; justify-content: center;
-                padding: 0.4rem 0.2rem; 
-                width: 100% !important; 
-                margin: 0 auto !important;
-                font-size: 0.7rem; line-height: 1.2;
-                color: #8fa6aa; border-radius: 14px;
-                transition: all 0.3s ease;
-            }
-            .responsive-nav .nav-link i { 
-                font-size: 1.3rem; margin-bottom: 5px; 
-                width: 24px; height: 24px; 
-                display: flex; align-items: center; justify-content: center;
-            }
-            .responsive-nav .nav-link.active {
-                background-color: rgba(20, 106, 120, 0.1);
-                color: var(--brand-teal); font-weight: 700;
-            }
-            .desktop-nav-text { display: none; }
-
-            /* TỐI ƯU CHIỀU NGANG: Tận dụng tối đa không gian thừa 2 bên */
-            #app-section > .container-md {
-                padding-left: 6px !important;
-                padding-right: 6px !important;
-            }
-            /* Trả lại không gian cho chữ trong thẻ danh bạ */
-            .list-hero-img {
-                width: 95px !important; 
-                left: 0 !important; 
-            }
-            .list-hero-info {
-                margin-left: 95px !important; 
-                padding-right: 5px !important;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .responsive-nav {
-                background: rgba(255, 255, 255, 0.95);
-                border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                display: flex; padding: 0.5rem; margin-bottom: 1.5rem; gap: 0.5rem;
-            }
-            .responsive-nav .nav-link {
-                display: flex; align-items: center; justify-content: center; gap: 8px; 
-                padding: 0.6rem 1.2rem; color: #6c757d;
-                border-radius: 8px; font-weight: 600; transition: all 0.3s;
-            }
-            .responsive-nav .nav-link i { font-size: 1.1rem; width: 20px; text-align: center; }
-            .responsive-nav .nav-link.active {
-                background-color: var(--brand-teal); color: #ffffff;
-                box-shadow: 0 4px 10px rgba(20, 106, 120, 0.3);
-            }
-            .mobile-nav-text { display: none; }
-        }
-
-        /* ================= TIMELINE & ANIMATION ================= */
-        .timeline { border-left: 2px solid var(--brand-teal); padding-left: 1.5rem; margin-left: 10px; position: relative; }
-        .timeline-item { position: relative; margin-bottom: 1.5rem; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -1.9rem; top: 4px;
-            width: 14px; height: 14px; background: var(--brand-gold);
-            border: 3px solid #fff; border-radius: 50%;
-            box-shadow: 0 0 0 3px rgba(20, 106, 120, 0.2);
-        }
-        .timeline-item.past::before { background: #cbd5e1; border-color: #fff; box-shadow: none; }
-        .tab-pane.fade.show { animation: fadeIn 0.4s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .tb-list-item { cursor: pointer; transition: background-color 0.2s; }
-        .tb-list-item:hover, .tb-list-item:active { background-color: rgba(20, 106, 120, 0.05) !important; }
-
-        /* ================= THẺ CÁ NHÂN ================= */
-        .profile-hero-card {
-            margin-top: 60px; min-height: 140px; 
-            border-bottom: 4px solid var(--brand-gold);
-            background: linear-gradient(135deg, rgba(220, 240, 243, 0.95) 0%, rgba(255,255,255,0.95) 100%);
-            border-radius: 45px 15px 15px 15px; position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-        .profile-hero-img {
-            position: absolute; bottom: 0 !important; left: 5px; 
-            width: 130px; height: 135%; max-height: 180px; 
-            object-fit: contain; object-position: left bottom !important; 
-            z-index: 2; filter: drop-shadow(3px 3px 6px rgba(13, 75, 86, 0.15));
-        }
-        .profile-hero-info {
-            margin-left: 135px; padding: 1.5rem 1rem 1.5rem 0; 
-            position: relative; z-index: 3; width: auto;
-        }
-        @media (max-width: 380px) {
-            .profile-hero-img { width: 110px; left: 0px; }
-            .profile-hero-info { margin-left: 115px; padding-top: 1.2rem; }
-            .profile-hero-info h4 { font-size: 1.1rem !important; }
-        }
-
-        /* ================= DANH BẠ ĐOÀN 3D ================= */
-        .group-header {
-            position: relative; top: 0 !important; 
-            background: linear-gradient(135deg, var(--brand-teal) 0%, var(--brand-teal-dark) 100%);
-            color: white; padding: 8px 15px; font-size: 0.8rem; font-weight: 800;
-            text-transform: uppercase; letter-spacing: 1px;
-            z-index: 10; margin-top: 30px; margin-bottom: 55px; 
-            border-radius: 8px; box-shadow: 0 4px 10px rgba(13, 75, 86, 0.2);
-            border-left: 4px solid var(--brand-gold); display: flex; align-items: center;
-        }
-        .list-hero-card {
-            margin-top: 0; margin-bottom: 55px; min-height: 95px; 
-            border-bottom: 4px solid var(--brand-gold);
-            background: linear-gradient(135deg, rgba(220, 240, 243, 0.8) 0%, rgba(255,255,255,0.95) 100%);
-            border-radius: 35px 15px 15px 15px; position: relative;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.04); display: flex; align-items: center;
-        }
-        .list-hero-img {
-            position: absolute; bottom: 0 !important; left: 5px; 
-            width: 100px; height: 140%; max-height: 140px; 
-            object-fit: contain; object-position: left bottom !important; 
-            z-index: 2; filter: drop-shadow(3px 3px 6px rgba(13, 75, 86, 0.15));
-        }
-        .list-hero-info {
-            margin-left: 110px; padding: 15px 10px 15px 0; width: 100%;
-            z-index: 3; position: relative;
-        }
-        /* Ép tên danh bạ cũng được rớt dòng */
-        .list-hero-info .search-name {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            line-height: 1.3;
-        }
-        
-
-        /* ================= NÚT SCROLL TO TOP TOÀN CỤC ================= */
-        #btn-back-to-top {
-            position: fixed; 
-            display: none; /* Ẩn mặc định, JS sẽ lo phần hiện */
-            width: 45px; height: 45px; 
-            border-radius: 50%;
-            background-color: var(--brand-teal); 
-            color: white;
-            border: 2px solid rgba(255,255,255,0.5); 
-            box-shadow: 0 4px 12px rgba(13, 75, 86, 0.4);
-            z-index: 1060; /* Z-index cực cao để đè lên mọi thứ */
-            align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.3s;
-        }
-
-        /* Vị trí trên Điện thoại: Đẩy lên cao để không bị thanh Menu ghim dưới đè */
-        @media (max-width: 767.98px) {
-            #btn-back-to-top {
-                bottom: 95px; /* Cách đáy 95px để né thanh Menu dưới */
-                right: 15px; 
-            }
-        }
-
-        /* Vị trí trên Máy tính/Tablet */
-        @media (min-width: 768px) {
-            #btn-back-to-top {
-                bottom: 40px; 
-                right: 40px; 
-            }
-        }
-
-        #btn-back-to-top:hover {
-            background-color: var(--brand-gold);
-            color: var(--brand-teal-dark);
-            transform: translateY(-3px);
-        }
-
-        /* ================= CHỮ IN HOA CHUẨN VIỆT ================= */
-        .name-vn {
-            font-family: 'Be Vietnam Pro', sans-serif !important;
-            line-height: 1.4 !important; padding-top: 3px; 
-        }
-
-        /* ================= TYPOGRAPHY POLISH ================= */
-        #header-title { font-size: 1.15rem !important; }
-        .top-header .text-white-50 { font-size: 0.8rem !important; }
-        .badge { font-size: 0.75rem !important; padding: 0.35em 0.6em !important; }
-        .text-muted.small { font-size: 0.85rem !important; line-height: 1.4 !important; }
-        .text-muted.text-uppercase.fw-bold { font-size: 0.7rem !important; }
-        .list-group-item .text-dark.small { font-size: 0.95rem !important; line-height: 1.6 !important; }
-        #tb-detail-rules, #tb-detail-prize { font-size: 0.95rem !important; line-height: 1.6 !important; }
-        #p-name { font-size: 1.35rem !important; }
-        .list-hero-info .search-name { font-size: 1.15rem !important; }
-        .group-header { font-size: 0.85rem !important; }
-
-        /* ================= SỬA LỖI TÊN KHOA DÀI & LẤY LẠI AVATAR 3D ================= */
-        
-        /* 1. TRẢ LẠI CÁI ĐẦU 3D: Phải dùng overflow: visible để ảnh lòi ra ngoài thẻ */
-        .list-hero-card {
-            max-width: 100% !important;
-            overflow: visible !important; /* <--- Lệnh cứu cái đầu avatar */
-        }
-
-        /* 2. Bùa chú Flexbox: Ép khung chữ tự giới hạn (Không cần dùng overflow: hidden ở thẻ cha nữa) */
-        .list-hero-info {
-            min-width: 0 !important; 
-            flex: 1 1 0% !important; /* Ép khung chữ bắt buộc nằm gọn trong thẻ */
-        }
-
-        /* 3. Cho phép dòng chữ Khoa/Phòng rớt dòng thoải mái */
-        .list-hero-info .text-muted.small {
-            white-space: normal !important; 
-            word-wrap: break-word !important; 
-            line-height: 1.4 !important; 
-            display: block !important;
-            padding-right: 5px; 
-        }
+    /* Nút cuộn lên đầu (Scroll to top) nằm gọn bên phải */
+    #btn-back-to-top {
+        bottom: 30px; 
+        right: 20px; 
+    }
+}
 
         
     </style>
