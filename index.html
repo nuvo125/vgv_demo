@@ -492,65 +492,6 @@
                             </div>
                         </div>
 
-                        <!-- ================= GIAO DIỆN HẬU CẦN (E-TICKET STYLE) ================= -->
-                        <div class="glass-card mt-4 mb-4 overflow-hidden border-0 shadow-sm" style="border-radius: 20px;">
-                            
-                            <!-- Dịch vụ Hậu cần -->
-                            <div class="py-3 px-4 d-flex align-items-center border-bottom border-light">
-                                <i class="fa-solid fa-suitcase-rolling me-2 fs-5 text-gold"></i>
-                                <h6 class="fw-bold text-teal mb-0 text-uppercase letter-spacing-1" style="font-size: 0.85rem;">Thông tin Di chuyển & Lưu trú</h6>
-                            </div>
-
-                            <div class="p-0 bg-white">
-                                <!-- Dòng 1: Tàu -->
-                                <div class="d-flex align-items-center border-bottom border-light px-4 py-3">
-                                    <div class="bg-teal bg-opacity-10 text-teal rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-train-subway"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="text-muted text-uppercase fw-bold mb-1" style="font-size: 0.65rem; letter-spacing: 0.5px;">Chuyến tàu</div>
-                                        <div class="fw-bold text-dark" id="p-tau" style="font-size: 1.05rem;">Đang tải...</div>
-                                    </div>
-                                </div>
-
-                                <!-- Dòng 2: Xe Bus -->
-                                <div class="d-flex align-items-center border-bottom border-light px-4 py-3">
-                                    <div class="bg-gold bg-opacity-25 text-dark rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-bus"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="text-muted text-uppercase fw-bold mb-1" style="font-size: 0.65rem; letter-spacing: 0.5px;">Số xe di chuyển</div>
-                                        <div class="fw-bold text-dark" id="p-xe" style="font-size: 1.05rem;">...</div>
-                                    </div>
-                                </div>
-
-                                <!-- Dòng 3: Khách sạn & Cùng phòng -->
-                                <div class="d-flex align-items-center px-4 py-3">
-                                    <div class="bg-secondary bg-opacity-10 text-secondary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-bed"></i>
-                                    </div>
-                                    <div class="flex-grow-1 overflow-hidden">
-                                        <div class="text-muted text-uppercase fw-bold mb-1" style="font-size: 0.65rem; letter-spacing: 0.5px;">Phòng khách sạn</div>
-                                        <div class="fw-bold text-dark mb-1" id="p-room" style="font-size: 1.05rem;">...</div>
-                                        <div class="d-inline-flex align-items-center bg-light rounded-pill px-2 py-1 border text-truncate w-100">
-                                            <i class="fa-solid fa-user-group text-muted me-2" style="font-size: 0.65rem;"></i>
-                                            <span class="text-muted text-truncate" id="p-roommate" style="font-size: 0.75rem;">...</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Dòng 4: Phòng Du Thuyền -->
-                                <div class="d-flex align-items-center border-bottom border-light px-4 py-3">
-                                    <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                        <i class="fa-solid fa-ship"></i>
-                                    </div>
-                                    <div class="flex-grow-1">
-                                        <div class="text-muted text-uppercase fw-bold mb-1" style="font-size: 0.65rem; letter-spacing: 0.5px;">Phòng du thuyền</div>
-                                        <div class="fw-bold text-dark" id="p-cruise" style="font-size: 1.05rem;">...</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                         <!-- ================= VÉ MÁY BAY ================= -->
                         <div class="glass-card mb-4 overflow-hidden shadow-sm" style="border-radius: 20px; border: 2px dashed rgba(20, 106, 120, 0.2);">
@@ -820,12 +761,7 @@
                     sloganContainer.classList.add('d-none');
                 }
                 document.getElementById('p-dept').innerText = personalData['khoa'] || "---";
-                document.getElementById('p-tau').innerText = personalData['tàu'] || "---";
-                document.getElementById('p-xe').innerText = personalData['xe'] || "---";
-                document.getElementById('p-room').innerText = personalData['phòng khách sạn'] ? `Phòng ${personalData['phòng khách sạn']}` : "---";
-                document.getElementById('p-cruise').innerText = personalData['phòng du thuyền'] ? `Phòng ${personalData['phòng du thuyền']}` : "---";
-                document.getElementById('p-roommate').innerText = personalData['ở cùng'] || "Không có";
-
+                
                 const qrContainer = document.getElementById('p-qr-container');
                 if (personalData['qr']) {
                     qrContainer.innerHTML = `<div class="fw-bold text-dark fs-3 letter-spacing-1 mb-1" style="font-family: monospace;">${personalData['qr']}</div><div class="text-muted text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">Mã xác nhận / Booking Code</div>`;
